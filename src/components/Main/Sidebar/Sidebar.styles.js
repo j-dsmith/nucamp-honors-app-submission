@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const StyledSidebar = styled.div`
   margin: 10px;
   background-color: #333;
-  grid-row: 2 / span 6;
-  grid-column: 1 / span 2;
+  grid-row: 1 / span 8;
+  grid-column: 1 / span 1;
   border-radius: 15px;
   transition: all 0.5s ease;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
