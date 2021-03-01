@@ -1,6 +1,8 @@
 import React from "react";
 import {
+  SidebarContainer,
   StyledSidebar,
+  SidebarTray,
   SidebarLabel,
   SidebarIcon,
   SidebarItem,
@@ -9,17 +11,20 @@ import { SidebarData } from "./SidebarData";
 
 const Sidebar = (props) => {
   return (
-    <StyledSidebar>
-      {/* Map over sidebar data to fill sidebar */}
-      {SidebarData.map(({ title, path, icon }, index) => {
-        return (
-          <SidebarItem key={index}>
-            <SidebarIcon>{icon}</SidebarIcon>
-            <SidebarLabel>{title}</SidebarLabel>
-          </SidebarItem>
-        );
-      })}
-    </StyledSidebar>
+    <SidebarContainer>
+      <StyledSidebar>
+        {/* Map over sidebar data to fill sidebar */}
+        {SidebarData.map(({ title, path, icon }, index) => {
+          return (
+            <SidebarItem key={index}>
+              <SidebarIcon>{icon}</SidebarIcon>
+              <SidebarLabel>{title}</SidebarLabel>
+            </SidebarItem>
+          );
+        })}
+      </StyledSidebar>
+      <SidebarTray className="active" />
+    </SidebarContainer>
   );
 };
 
