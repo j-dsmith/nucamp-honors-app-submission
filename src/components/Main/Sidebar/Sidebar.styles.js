@@ -26,6 +26,7 @@ export const SidebarTray = styled.div`
   border-radius: 15px;
   width: 250px;
   height: 100%;
+  transition: width 0.3s ease;
 
   &.active {
     width: 500px;
