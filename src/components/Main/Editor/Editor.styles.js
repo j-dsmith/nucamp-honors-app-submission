@@ -3,7 +3,7 @@ import ReactQuill from "react-quill";
 
 export const StyledEditor = styled(ReactQuill)`
   margin-top: 5px;
-
+  color: #333;
   border-radius: 15px;
   grid-column: 4 / span 4;
   grid-row: 2 / span 6;
@@ -20,5 +20,18 @@ export const StyledEditor = styled(ReactQuill)`
 
   .ql-snow {
     border: none;
+  }
+`;
+
+export const NoteTitle = styled.input`
+  margin: 20px 0px 0px 10px;
+  grid-column: 4 / span 4;
+  grid-row: 1 / span 1;
+  font-size: 2rem;
+  color: #333;
+  border: none;
+  font-weight: bold;
+  &:focus {
+    outline: none;
   }
 `;

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "react-quill/dist/quill.snow.css";
-import { StyledEditor } from "./Editor.styles";
+import { StyledEditor, NoteTitle } from "./Editor.styles";
 
 export default class Editor extends Component {
   state = {
+    title: "",
     text: "",
   };
 
@@ -43,13 +44,20 @@ export default class Editor extends Component {
 
   render() {
     return (
-      <StyledEditor
-        theme="snow"
-        modules={this.modules}
-        formats={this.formats}
-        value={this.state.text}
-        onChange={this.handleChange}
-      ></StyledEditor>
+      <>
+        <NoteTitle
+          type="text"
+          placeholder="Title"
+          onChange={(e) => this.setState({ title: e.target.value })}
+        />
+        <StyledEditor
+          theme="snow"
+          modules={this.modules}
+          formats={this.formats}
+          value={this.state.text}
+          onChange={this.handleChange}
+        ></StyledEditor>
+      </>
     );
   }
 }
