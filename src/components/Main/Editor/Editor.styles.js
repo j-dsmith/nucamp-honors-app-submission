@@ -24,7 +24,7 @@ export const StyledEditor = styled(ReactQuill)`
 `;
 
 export const NoteTitle = styled.input`
-  margin: 20px 0px 0px 10px;
+  margin: 20px 0px 0px 8px;
   grid-column: 4 / span 4;
   grid-row: 1 / span 1;
   font-size: 2rem;
