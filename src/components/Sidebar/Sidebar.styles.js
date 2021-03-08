@@ -71,3 +71,18 @@ export const SidebarIcon = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const SidebarCard = styled.div`
+  background-color: #fcfaf9;
+  margin: 10px;
+  border-radius: 15px;
+
+  ul {
+    list-style-type: none;
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #5e5e5e;
+    }
+  }
+`;

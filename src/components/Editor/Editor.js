@@ -19,11 +19,10 @@ export default class Editor extends Component {
 
   handleChange = (value) => {
     this.setState({ text: value });
-    console.log(this.state.text);
   };
 
   onClickSave = () => {
-    const id = Math.floor(Math.random() * 1000);
+    const id = Math.floor(Math.random() * 10000);
     this.props.addNote({ id, ...this.state });
   };
 
