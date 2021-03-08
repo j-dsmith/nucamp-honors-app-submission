@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addNote, deleteNote } from "../../redux/ActionCreators";
+import { addNote, deleteNote } from "../redux/ActionCreators";
 import Sidebar from "./Sidebar/Sidebar";
 import Editor from "./Editor/Editor";
 
@@ -20,11 +20,11 @@ class Main extends Component {
   render() {
     return (
       <div className={"grid-container"}>
-        <Sidebar />
-        <Editor />
+        {/* <Sidebar /> */}
+        <Editor addNote={this.props.addNote} />
       </div>
     );
   }
 }
 
-export default Main;
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

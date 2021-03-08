@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import ReactQuill from "react-quill";
 
-export const StyledEditor = styled(ReactQuill)`
+export const StyledEditor = styled.div`
   margin-top: 5px;
   color: #333;
   border-radius: 15px;
@@ -33,5 +32,18 @@ export const NoteTitle = styled.input`
   font-weight: bold;
   &:focus {
     outline: none;
+  }
+`;
+
+export const SaveButton = styled.span`
+  background-color: #333;
+  color: #48e5c2;
+  border: none;
+  border-radius: 5px 15px 5px 15px;
+  cursor: pointer;
+  padding: 5px 10px;
+
+  &:hover {
+    background-color: #3d3d3d;
   }
 `;

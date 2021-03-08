@@ -127,6 +127,10 @@ body > #root {
 
 }
 
+.ql-save {
+  margin-left: 70px;
+}
+
 `;
 
 export default GlobalStyle;
