@@ -22,7 +22,7 @@ class Main extends Component {
     return (
       <div className={"grid-container"}>
         {/* <Sidebar notes={this.props.notes} /> */}
-        {/* <Editor addNote={this.props.addNote} /> */}
+        <Editor addNote={this.props.addNote} />
         <TrayData notes={this.props.notes} />
       </div>
     );

@@ -8,6 +8,7 @@ import {
   SidebarIcon,
   SidebarItem,
 } from "./Sidebar.styles";
+import TrayData from "./SidebarTray";
 import { SidebarData } from "./SidebarData";
 
 const Sidebar = (props) => {

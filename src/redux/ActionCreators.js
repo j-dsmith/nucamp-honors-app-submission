@@ -1,9 +1,11 @@
 import * as ActionTypes from "./ActionTypes";
 
-export const addNote = (note) => ({
+export const addNote = ({ id, title, text }) => ({
   type: ActionTypes.ADD_NOTE,
   payload: {
-    note,
+    id,
+    title,
+    text,
   },
 });
 

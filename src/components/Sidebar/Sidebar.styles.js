@@ -33,6 +33,12 @@ export const SidebarTray = styled.div`
   height: 100%;
   transition: width 0.3s ease;
 
+  h2 {
+    margin: 10px;
+    padding-left: 10px;
+    color: #1f1f1f;
+  }
+
   &.active {
     width: 500px;
   }
@@ -73,7 +79,7 @@ export const SidebarIcon = styled.div`
 `;
 
 export const SidebarCard = styled.div`
-  background-color: #fcfaf9;
+  background-color: #333;
   margin: 10px;
   border-radius: 15px;
 
@@ -83,6 +89,29 @@ export const SidebarCard = styled.div`
     li {
       padding: 10px;
       border-bottom: 1px solid #5e5e5e;
+      color: #fcfaf9;
+
+      p {
+        //truncate display of content to one line
+        //! study before submission - add to notes for understanding/explanation
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: rgba(252, 250, 249, 0.85);
+        font-size: 0.85rem;
+      }
+    }
+
+    li.active-note {
+      background-color: #48e5c2;
+    }
+
+    li:first-child {
+      border-radius: 15px 15px 0 0;
+    }
+
+    li:last-child {
+      border-radius: 0 0 15px 15px;
     }
   }
 `;
