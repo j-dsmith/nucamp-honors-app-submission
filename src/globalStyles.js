@@ -127,8 +127,9 @@ body > #root {
 
 }
 
-.ql-save {
-  margin-left: 70px;
+.ql-snow.ql-toolbar .ql-save {
+  float: right;
+  margin-right: 30px;
 }
 
 `;

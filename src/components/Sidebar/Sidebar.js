@@ -3,12 +3,11 @@ import {
   SidebarContainer,
   SidebarSection,
   StyledSidebar,
-  SidebarTray,
   SidebarLabel,
   SidebarIcon,
   SidebarItem,
 } from "./Sidebar.styles";
-import TrayData from "./SidebarTray";
+import NotesTray from "./NotesTray";
 import { SidebarData } from "./SidebarData";
 
 const Sidebar = (props) => {
@@ -40,7 +39,7 @@ const Sidebar = (props) => {
         </SidebarSection>
         <SidebarSection id="sidebar-tools"></SidebarSection>
       </StyledSidebar>
-      <SidebarTray className={active ? "active" : null} />
+      <NotesTray projects={props.projects} active={active} />
     </SidebarContainer>
   );
 };

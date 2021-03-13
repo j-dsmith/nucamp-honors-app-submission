@@ -3,12 +3,11 @@ import { connect } from "react-redux";
 import { addNote, deleteNote } from "../redux/ActionCreators";
 import Sidebar from "./Sidebar/Sidebar";
 import Editor from "./Editor/Editor";
-import TrayData from "./Sidebar/SidebarTray";
 
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    notes: state.notes,
+    projects: state.projects,
   };
 };
 
@@ -21,9 +20,9 @@ class Main extends Component {
   render() {
     return (
       <div className={"grid-container"}>
-        {/* <Sidebar notes={this.props.notes} /> */}
+        <Sidebar projects={this.props.projects} />
         <Editor addNote={this.props.addNote} />
-        <TrayData notes={this.props.notes} />
+        {/* <TrayData notes={this.props.notes} /> */}
       </div>
     );
   }

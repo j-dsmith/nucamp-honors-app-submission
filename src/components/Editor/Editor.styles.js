@@ -30,6 +30,7 @@ export const NoteTitle = styled.input`
   color: #333;
   border: none;
   font-weight: bold;
+  background: none;
   &:focus {
     outline: none;
   }
@@ -44,6 +45,6 @@ export const SaveButton = styled.span`
   padding: 5px 10px;
 
   &:hover {
-    background-color: #3d3d3d;
+    background-color: #292929;
   }
 `;

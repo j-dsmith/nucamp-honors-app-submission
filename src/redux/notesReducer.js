@@ -1,31 +1,23 @@
-import * as ActionTypes from "./ActionTypes";
+// import * as ActionTypes from "./ActionTypes";
 
-const INITIAL_STATE = {
-  notes: [
-    { id: 0, text: "Learn React", completed: true },
-    { id: 1, text: "Learn Redux", completed: false, color: "blue" },
-    { id: 2, text: "Build something fun!", completed: true, color: "orange" },
-  ],
-};
+// const notesReducer = (state = INITIAL_STATE, action) => {
+//   switch (action.type) {
+//     case ActionTypes.ADD_NOTE:
+//       return {
+//         ...state,
+//         notes: [...state.notes, action.payload],
+//       };
+//     case ActionTypes.DELETE_NOTE:
+//       //check if each note matches current note by id
+//       //if note, return it in new array
+//       //note to be deleted will be left out - aka deleted
+//       const updatedNotes = state.notes.filter(
+//         (note) => note.id !== action.payload
+//       );
+//       return { ...state, notes: updatedNotes };
+//     default:
+//       return state;
+//   }
+// };
 
-const notesReducer = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
-    case ActionTypes.ADD_NOTE:
-      return {
-        ...state,
-        notes: [...state.notes, action.payload],
-      };
-    case ActionTypes.DELETE_NOTE:
-      //check if each note matches current note by id
-      //if note, return it in new array
-      //note to be deleted will be left out - aka deleted
-      const updatedNotes = state.notes.filter(
-        (note) => note.id !== action.payload
-      );
-      return { ...state, notes: updatedNotes };
-    default:
-      return state;
-  }
-};
-
-export default notesReducer;
+// export default notesReducer;

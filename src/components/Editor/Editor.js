@@ -22,8 +22,9 @@ export default class Editor extends Component {
   };
 
   onClickSave = () => {
+    const date = new Date().toLocaleDateString();
     const id = Math.floor(Math.random() * 10000);
-    this.props.addNote({ id, ...this.state });
+    this.props.addNote({ id, ...this.state, date });
   };
 
   modules = {

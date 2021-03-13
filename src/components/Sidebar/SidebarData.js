@@ -1,21 +1,20 @@
 import React from "react";
-import * as VscIcons from "react-icons/vsc";
+import * as BsIcons from "react-icons/bs";
 
 export const SidebarData = [
   {
     title: "Home",
     path: "/home",
-    icon: <VscIcons.VscHome />,
+    icon: <BsIcons.BsHouse />,
   },
   {
     title: "Projects",
     path: "/projects",
-    icon: <VscIcons.VscFolder />,
-    submenu: [
-      {
-        id: 0,
-        title: "project1",
-      },
-    ],
+    icon: <BsIcons.BsFolder />,
+  },
+  {
+    title: "Trash",
+    path: "/trash",
+    icon: <BsIcons.BsTrash />,
   },
 ];
