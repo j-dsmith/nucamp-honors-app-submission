@@ -34,7 +34,7 @@ export const StyledSidebar = styled.div`
   }
 `;
 
-export const SidebarTray = styled.div`
+export const StyledTray = styled.div`
   position: absolute;
   transform: translateX(-100%);
   background-color: #5e5e5e;

@@ -4,13 +4,6 @@ import { addNote, deleteNote } from "../redux/ActionCreators";
 import Sidebar from "./Sidebar/Sidebar";
 import Editor from "./Editor/Editor";
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    projects: state.projects,
-  };
-};
-
 const mapDispatchToProps = {
   addNote: (text) => addNote(text),
   deleteNote: (id) => deleteNote(id),
@@ -18,9 +11,10 @@ const mapDispatchToProps = {
 
 class Main extends Component {
   render() {
+    const { active, showProjects, showNotes } = this.props;
     return (
       <div className={"grid-container"}>
-        <Sidebar projects={this.props.projects} />
+        <Sidebar />
         <Editor addNote={this.props.addNote} />
         {/* <TrayData notes={this.props.notes} /> */}
       </div>
@@ -28,4 +22,4 @@ class Main extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(null, mapDispatchToProps)(Main);

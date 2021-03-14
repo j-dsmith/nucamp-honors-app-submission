@@ -1,6 +1,6 @@
 import * as ActionTypes from "./ActionTypes";
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   projects: [
     {
       id: 0,
@@ -13,11 +13,11 @@ const INITIAL_STATE = {
     },
     {
       id: 1,
-      title: "Numba 2",
+      title: "Note 2",
       notes: [
-        { id: 0, title: "Mans Not Hot", text: "Boom" },
-        { id: 1, title: "Skrr pop pop", text: "Learn Redux" },
-        { id: 2, title: "Take of yuh jacket", text: "babes, mans not hot" },
+        { id: 0, title: "Redux is Hard", text: "Thats all" },
+        { id: 1, title: "Bucket List Goals", text: "Learn Redux" },
+        { id: 2, title: "Reality?", text: "Hold keyboard and cry..." },
       ],
     },
   ],
@@ -28,7 +28,7 @@ export const projects = (state = INITIAL_STATE, action) => {
     case ActionTypes.ADD_PROJECT:
       return {
         ...state,
-        projects: [...state.projects, action.payload],
+        projects: state.projects.concat(action.payload),
       };
     case ActionTypes.DELETE_PROJECT:
       const updatedProjects = state.projects.filter(

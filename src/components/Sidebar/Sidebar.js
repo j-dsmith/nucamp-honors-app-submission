@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { showTray } from "../../redux/ActionCreators";
 import {
   SidebarContainer,
   SidebarSection,
@@ -7,11 +9,40 @@ import {
   SidebarIcon,
   SidebarItem,
 } from "./Sidebar.styles";
-import NotesTray from "./NotesTray";
+import SidebarTray from "./SidebarTray";
 import { SidebarData } from "./SidebarData";
 
+const mapStateToProps = (state) => ({
+  active: state.active,
+  showProjects: state.showProjects,
+  showNotes: state.showNotes,
+});
+
+const mapDispatchToProps = {
+  showTray: (viewData) => showTray(viewData),
+};
+
 const Sidebar = (props) => {
-  const [active, setActive] = useState(false);
+  const { showTray, showProjects, showNotes, active } = props;
+  console.log(props);
+
+  const handleProjectsClick = () => {
+    if (!showProjects) {
+      showTray({
+        active: true,
+        showProjects: true,
+        showNotes: false,
+      });
+    }
+  };
+
+  const closeTray = () => {
+    showTray({
+      active: false,
+      showProjects: false,
+      showNotes: false,
+    });
+  };
 
   return (
     <SidebarContainer>
@@ -22,7 +53,8 @@ const Sidebar = (props) => {
           {SidebarData.map(({ title, path, icon }, index) => {
             if (title === "Projects") {
               return (
-                <SidebarItem key={index} onClick={() => setActive(!active)}>
+                //this needs to rerender after dispatch
+                <SidebarItem key={index} onClick={() => handleProjectsClick()}>
                   <SidebarIcon>{icon}</SidebarIcon>
                   <SidebarLabel>{title}</SidebarLabel>
                 </SidebarItem>
@@ -37,11 +69,14 @@ const Sidebar = (props) => {
             }
           })}
         </SidebarSection>
-        <SidebarSection id="sidebar-tools"></SidebarSection>
+        <SidebarSection id="sidebar-tools">
+          {" "}
+          <button onClick={() => closeTray()}>test</button>
+        </SidebarSection>
       </StyledSidebar>
-      <NotesTray projects={props.projects} active={active} />
+      <SidebarTray />
     </SidebarContainer>
   );
 };
 
-export default Sidebar;
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

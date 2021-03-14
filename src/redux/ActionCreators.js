@@ -19,3 +19,8 @@ export const deleteNote = (id) => ({
   type: ActionTypes.DELETE_NOTE,
   payload: id,
 });
+
+export const showTray = (viewData) => ({
+  type: ActionTypes.SHOW_TRAY,
+  payload: viewData,
+});

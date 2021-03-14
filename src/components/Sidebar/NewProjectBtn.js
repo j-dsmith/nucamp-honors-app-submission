@@ -2,7 +2,7 @@ import React from "react";
 import * as BsIcons from "react-icons/bs";
 import { NewBtn } from "./Sidebar.styles";
 
-const NewProjectBtn = ({ noteTitle, addProject }) => {
+const NewProjectBtn = ({ newProjectTitle, addProject }) => {
   const id = Math.floor(Math.random() * 10000);
 
   return (
@@ -10,7 +10,7 @@ const NewProjectBtn = ({ noteTitle, addProject }) => {
       onClick={() =>
         addProject({
           id: id,
-          title: noteTitle,
+          title: newProjectTitle,
           notes: [],
         })
       }
