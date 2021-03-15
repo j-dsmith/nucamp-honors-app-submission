@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import * as BsIcons from "react-icons/bs";
 import * as BiIcons from "react-icons/bi";
 import {
@@ -9,15 +10,21 @@ import {
 } from "./Sidebar.styles";
 import NewProjectBtn from "./NewProjectBtn";
 
+const mapStateToProps = (state) => ({
+  projects: state,
+});
+
 const ProjectsTray = ({
   projects,
-  active,
+  trayActive,
   handleProjectSelected,
   addProject,
 }) => {
   const [newProjectTitle, setNewProjectTitle] = useState("");
+  console.log(projects);
+
   return (
-    <StyledTray className={active ? "active" : null}>
+    <StyledTray className={trayActive ? "tray-active" : null}>
       <h2>Projects</h2>
       <TrayHeading>
         <NewItemInput
@@ -32,13 +39,13 @@ const ProjectsTray = ({
       </TrayHeading>
       <SidebarCard className="projects-tray">
         <ul>
-          {projects.projects.map((project) => {
+          {projects.map((project) => {
             return (
-              <li key={project.id}>
+              <li key={project.projectId}>
                 <div
                   className="project-list-item"
                   onClick={() => {
-                    handleProjectSelected(project);
+                    handleProjectSelected(project.projectId);
                   }}
                 >
                   <div className="list-icon">
@@ -58,4 +65,4 @@ const ProjectsTray = ({
   );
 };
 
-export default ProjectsTray;
+export default connect(mapStateToProps)(ProjectsTray);

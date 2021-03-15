@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { showTray } from "../../redux/ActionCreators";
 import {
   SidebarContainer,
   SidebarSection,
@@ -12,37 +11,18 @@ import {
 import SidebarTray from "./SidebarTray";
 import { SidebarData } from "./SidebarData";
 
-const mapStateToProps = (state) => ({
-  active: state.active,
-  showProjects: state.showProjects,
-  showNotes: state.showNotes,
-});
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {
-  showTray: (viewData) => showTray(viewData),
-};
+const mapDispatchToProps = {};
 
 const Sidebar = (props) => {
-  const { showTray, showProjects, showNotes, active } = props;
-  console.log(props);
+  const [trayActive, setTrayActive] = useState(false);
 
   const handleProjectsClick = () => {
-    if (!showProjects) {
-      showTray({
-        active: true,
-        showProjects: true,
-        showNotes: false,
-      });
-    }
+    setTrayActive(!trayActive);
   };
 
-  const closeTray = () => {
-    showTray({
-      active: false,
-      showProjects: false,
-      showNotes: false,
-    });
-  };
+  const closeTray = () => {};
 
   return (
     <SidebarContainer>
@@ -74,7 +54,7 @@ const Sidebar = (props) => {
           <button onClick={() => closeTray()}>test</button>
         </SidebarSection>
       </StyledSidebar>
-      <SidebarTray />
+      <SidebarTray trayActive={trayActive} />
     </SidebarContainer>
   );
 };

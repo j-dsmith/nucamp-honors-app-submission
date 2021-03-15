@@ -52,7 +52,7 @@ export const StyledTray = styled.div`
     display: inline-block;
   }
 
-  &.active {
+  &.tray-active {
     transform: translateX(75%);
   }
 `;

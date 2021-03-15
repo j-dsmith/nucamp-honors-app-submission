@@ -9,7 +9,7 @@ const NewProjectBtn = ({ newProjectTitle, addProject }) => {
     <NewBtn
       onClick={() =>
         addProject({
-          id: id,
+          projectId: id,
           title: newProjectTitle,
           notes: [],
         })

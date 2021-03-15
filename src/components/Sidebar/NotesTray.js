@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import * as BsIcons from "react-icons/bs";
 import {
   SidebarCard,
@@ -8,11 +9,20 @@ import {
 } from "./Sidebar.styles";
 import NewNoteBtn from "./NewNoteBtn";
 
-const NotesTray = ({ projectSelected, active, addNote }) => {
+const mapStateToProps = (state) => ({
+  projects: state,
+});
+
+const NotesTray = ({ projectSelectedId, trayActive, addNote, projects }) => {
   const [newNoteTitle, setNewNoteTitle] = useState("");
+
+  const currentProject = projects.find(
+    (project) => project.projectId === projectSelectedId
+  );
+
   return (
-    <StyledTray className={active ? "active" : null}>
-      <h2>{projectSelected.title}</h2>
+    <StyledTray className={trayActive ? "tray-active" : null}>
+      <h2>{currentProject.title}</h2>
       <TrayHeading>
         <NewItemInput
           placeholder="New Note"
@@ -20,16 +30,16 @@ const NotesTray = ({ projectSelected, active, addNote }) => {
           onChange={(e) => setNewNoteTitle(e.target.value)}
         />
         <NewNoteBtn
-          projectSelected={projectSelected}
+          projectSelectedId={projectSelectedId}
           newNoteTitle={newNoteTitle}
           addNote={addNote}
         />
       </TrayHeading>
       <SidebarCard className="projects-tray">
         <ul>
-          {projectSelected.notes.map((note) => {
+          {currentProject.notes.map((note) => {
             return (
-              <li key={note.id}>
+              <li key={note.noteId}>
                 <div className="notes-list-item">
                   <div className="list-icon">
                     <BsIcons.BsFileText />
@@ -48,4 +58,4 @@ const NotesTray = ({ projectSelected, active, addNote }) => {
   );
 };
 
-export default NotesTray;
+export default connect(mapStateToProps)(NotesTray);
