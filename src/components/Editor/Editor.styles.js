@@ -1,10 +1,20 @@
 import styled from "styled-components";
 
+export const StyledContainer = styled.div`
+  border: 2px dashed red;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-column: 3 / 9;
+  grid-row: 1 / 9;
+`;
+
 export const StyledEditor = styled.div`
   margin-top: 5px;
   color: #333;
   border-radius: 15px;
-  grid-column: 4 / span 4;
+
+  grid-column: 2 / span 6;
   grid-row: 2 / span 6;
   background-color: rgba(243, 236, 222, 0.7);
   color: #333;
@@ -24,7 +34,7 @@ export const StyledEditor = styled.div`
 
 export const NoteTitle = styled.input`
   margin: 20px 0px 0px 8px;
-  grid-column: 4 / span 4;
+  grid-column: 2 / span 6;
   grid-row: 1 / span 1;
   font-size: 2rem;
   color: #333;

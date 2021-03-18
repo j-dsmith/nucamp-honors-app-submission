@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const SidebarContainer = styled.div`
   grid-row: 1 / span 8;
@@ -18,7 +19,7 @@ export const StyledSidebar = styled.div`
   z-index: 1;
   height: 100%;
   width: 250px;
-  background-color: #333;
+  background-color: #292929;
   border-radius: 0px 15px 15px 0px;
   transition: all 0.5s ease;
   //box shadow from css-tricks.com
@@ -37,23 +38,29 @@ export const StyledSidebar = styled.div`
 export const StyledTray = styled.div`
   position: absolute;
   transform: translateX(-100%);
-  background-color: #5e5e5e;
+  background-color: #474747;
   z-index: 0;
   border-radius: 15px;
   width: 300px;
   height: 100%;
   transition: all 0.3s ease;
   padding-left: 25px;
+  overflow-y: scroll;
 
   h2 {
     margin: 10px;
     padding-left: 10px;
-    color: #1f1f1f;
+    color: #fcfaf9;
     display: inline-block;
   }
 
   &.tray-active {
     transform: translateX(75%);
+  }
+
+  &.trash-active {
+    transform: translateX(75%);
+    background-color: #81204b;
   }
 `;
 
@@ -63,7 +70,7 @@ export const TrayHeading = styled.div`
   align-items: center;
 `;
 
-export const SidebarItem = styled.div`
+export const SidebarItem = styled(Link)`
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -73,7 +80,7 @@ export const SidebarItem = styled.div`
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: #292929;
+    background-color: #1f1f1f;
   }
 `;
 
@@ -107,15 +114,16 @@ export const SidebarCard = styled.div`
   margin: 10px;
   border-radius: 15px;
 
+
   ul {
     list-style-type: none;
 
     li {
       padding: 10px;
-      border-bottom: 1px solid #5e5e5e;
+      border-bottom: 1px solid #3d3d3d;
       color: #fcfaf9;
       cursor: pointer;
-      transition: background-color 0.2s ease;
+      transition: background-color, color 0.2s ease;
 
       &:hover {
         background-color: #292929;
@@ -126,6 +134,12 @@ export const SidebarCard = styled.div`
 
           //add translate for arrow to slide right as it becomes visible
         }
+      
+      }
+
+      &.selected {
+        background-color: #48E5C2;
+        color: #292929
       }
 
       p {
@@ -136,22 +150,10 @@ export const SidebarCard = styled.div`
         text-overflow: ellipsis;
         color: rgba(252, 250, 249, 0.85);
         font-size: 0.85rem;
-      }
-
-      .project-list-item {
-        display: flex;
-        align-content: center;
-        justify-content: space-between;
-      }
-
-      .notes-list-item {
-        display: flex;
-        align-content: center;
-        justify-content: flex-start;
-      }
-
-      .notes-list-content {
-        margin-left: 20px;
+        
+        &.selected {
+          color: #3d3d3d
+        }
       }
 
       .list-icon {
@@ -160,6 +162,16 @@ export const SidebarCard = styled.div`
         display: flex;
         align-items: center;
         color: #48e5c2;
+
+        &.hidden {
+          display: none;
+        }
+      }
+
+      .project-list-item {
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
       }
 
       .project-list-title {
@@ -168,8 +180,20 @@ export const SidebarCard = styled.div`
         margin-right: auto;
       }
 
+      .notes-list-item {
+        display: flex;
+        align-content: center;
+        justify-content: flex-start;
+        
+        }
+      }
+
       .notes-list-title {
         font-size: 1rem;
+      }
+
+      .notes-list-content {
+        margin-left: 20px;
       }
 
       .note-list-summary {
@@ -200,12 +224,16 @@ export const SidebarCard = styled.div`
     li:last-child {
       border-radius: 0 0 15px 15px;
     }
+
+    li:only-child {
+      border-radius: 15px;
+    }
   }
 `;
 
 export const NewBtn = styled.div`
-  border-radius: 100%;
-  border: 1px solid #333;
+  border-radius: 50%;
+  /* border: 1px solid #000; */
   padding-top: 5px;
   margin: 15px 10px 10px 0;
   height: 30px;
@@ -218,12 +246,22 @@ export const NewBtn = styled.div`
 
   .add-item {
     display: inline-block;
+    line-height: 30px;
     color: #48e5c2;
     font-size: 1rem;
   }
 
+  .delete-item {
+    display: inline-block;
+    line-height: 30px;
+    color: #e5486a;
+    font-size: 1rem;
+    text-align: center;
+    padding: 1px 0 0 1px;
+  }
+
   &:hover {
-    background: #333;
+    background: #292929;
   }
 `;
 

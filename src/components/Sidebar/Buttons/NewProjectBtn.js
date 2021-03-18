@@ -1,6 +1,6 @@
 import React from "react";
 import * as BsIcons from "react-icons/bs";
-import { NewBtn } from "./Sidebar.styles";
+import { NewBtn } from "../Sidebar.styles";
 
 const NewProjectBtn = ({ newProjectTitle, addProject }) => {
   const id = Math.floor(Math.random() * 10000);

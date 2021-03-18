@@ -11,9 +11,23 @@ const GlobalStyle = createGlobalStyle`
 
 body > #root {
   height: 100vh;
-  width: 100vw
+  width: 100vw;
+  background-color: #FCFAF9;
 }
 
+//remove default styling for links
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover 
+{
+     text-decoration:none; 
+     cursor:pointer;  
+}
+
+//set base grid container for page
 .grid-container {
   height: 100%;
   width: 100%;
