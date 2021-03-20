@@ -5,6 +5,7 @@ import {
   addNote,
   addProject,
   deleteProject,
+  setContentSelected,
 } from "../../../redux/ActionCreators";
 
 import ProjectsTray from "./ProjectsTray";
@@ -22,6 +23,8 @@ const mapDispatchToProps = {
   addNote: (note) => addNote(note),
   addProject: (project) => addProject(project),
   deleteProject: (id) => deleteProject(id),
+  setContentSelected: (projectId, noteId) =>
+    setContentSelected(projectId, noteId),
 };
 
 class SidebarTray extends Component {
@@ -36,6 +39,9 @@ class SidebarTray extends Component {
   //on click, update tray visibility state to hide projects and show notes
   handleProjectSelected = (id) => {
     this.setState({ projectSelectedId: id });
+    //onclick set the project selected Id
+    this.props.setContentSelected(id);
+    //once project is clicked, set the notes tray active to render project contents
     this.props.setNotesActive();
   };
 

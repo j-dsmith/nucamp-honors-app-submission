@@ -114,7 +114,6 @@ export const SidebarCard = styled.div`
   margin: 10px;
   border-radius: 15px;
 
-
   ul {
     list-style-type: none;
 
@@ -134,12 +133,11 @@ export const SidebarCard = styled.div`
 
           //add translate for arrow to slide right as it becomes visible
         }
-      
       }
 
       &.selected {
-        background-color: #48E5C2;
-        color: #292929
+        background-color: #48e5c2;
+        color: #292929;
       }
 
       p {
@@ -150,9 +148,9 @@ export const SidebarCard = styled.div`
         text-overflow: ellipsis;
         color: rgba(252, 250, 249, 0.85);
         font-size: 0.85rem;
-        
+
         &.selected {
-          color: #3d3d3d
+          color: #3d3d3d;
         }
       }
 
@@ -184,8 +182,6 @@ export const SidebarCard = styled.div`
         display: flex;
         align-content: center;
         justify-content: flex-start;
-        
-        }
       }
 
       .notes-list-title {

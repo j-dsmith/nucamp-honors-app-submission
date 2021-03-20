@@ -7,7 +7,8 @@ import Editor from "./Editor/Editor";
 import EditorContainer from "./Editor/EditorContainer";
 
 const mapStateToProps = (state) => ({
-  noteSelected: state.noteSelected,
+  projects: state.projects,
+  contentSelected: state.contentSelected,
 });
 
 const mapDispatchToProps = {
@@ -17,7 +18,14 @@ const mapDispatchToProps = {
 
 class Main extends Component {
   render() {
-    const { active, showProjects, showNotes, noteSelected } = this.props;
+    const {
+      active,
+      showProjects,
+      showNotes,
+      noteSelected,
+      projects,
+    } = this.props;
+
     return (
       <div className={"grid-container"}>
         <Sidebar />
@@ -26,7 +34,11 @@ class Main extends Component {
           <Route path="/home" />
 
           <Route exact path="/projects" />
-          <Route exact path="/projects/:projectId" />
+          <Route
+            exact
+            path="/projects/:projectId"
+            render={() => <EditorContainer />}
+          />
           <Route
             path="/projects/:projectId/:noteId"
             render={() => <EditorContainer />}

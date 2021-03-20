@@ -1,5 +1,5 @@
 import React from "react";
-import { SaveButton } from "./Editor.styles";
+import { EditorButton } from "./Editor.styles";
 
 const Toolbar = () => {
   return (
@@ -22,7 +22,7 @@ const Toolbar = () => {
       <button className="ql-indent" value="-1"></button>
       <button className="ql-indent" value="+1"></button>
       <button className="ql-save">
-        <SaveButton id="save-note">Save</SaveButton>
+        <EditorButton id="save-note">Save</EditorButton>
       </button>
     </div>
   );

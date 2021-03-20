@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { StyledEditor, NoteTitle } from "./Editor.styles";
 import Toolbar from "./Toolbar";
 
-export default class Editor extends Component {
+const mapStateToProps = (state) => ({
+  noteSelected: state.noteSelected,
+});
+
+class Editor extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,10 +57,15 @@ export default class Editor extends Component {
   ];
 
   render() {
+    //destructure noteSelected from redux state, selectedTitle/selectedText from currently selected note to render editor values
+    const { selectedTitle, selectedText, noteSelected } = this.props;
+    console.log(selectedText, selectedTitle);
+
     return (
       <>
         <NoteTitle
           type="text"
+          value={this.state.title}
           placeholder="Title"
           onChange={(e) => this.setState({ title: e.target.value })}
           ref={(inputEl) => (this.titleInput = inputEl)}
@@ -67,6 +77,7 @@ export default class Editor extends Component {
             theme="snow"
             modules={this.modules}
             formats={this.formats}
+            //if note is selected, editor shows selected notes text content, otherwise show the current note
             value={this.state.text}
             onChange={this.handleChange}
           />
@@ -75,3 +86,5 @@ export default class Editor extends Component {
     );
   }
 }
+
+export default connect(mapStateToProps)(Editor);

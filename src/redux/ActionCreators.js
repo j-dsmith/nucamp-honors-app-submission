@@ -20,6 +20,10 @@ export const deleteNote = (id) => ({
   payload: id,
 });
 
-export const setNoteSelected = () => ({
+export const setContentSelected = (projectId, noteId) => ({
   type: ActionTypes.NOTE_SELECTED,
+  payload: {
+    projectId,
+    noteId,
+  },
 });

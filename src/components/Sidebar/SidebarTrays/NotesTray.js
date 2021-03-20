@@ -10,7 +10,7 @@ import {
 } from "../Sidebar.styles";
 import NewNoteBtn from "../Buttons/NewNoteBtn";
 import DeleteProjectBtn from "../Buttons/DeleteProjectBtn";
-import { setNoteSelected } from "../../../redux/ActionCreators";
+import { setContentSelected } from "../../../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
   projects: state.projects,
@@ -18,7 +18,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  setNoteSelected,
+  setContentSelected: (projectId, noteId) =>
+    setContentSelected(projectId, noteId),
 };
 
 const NotesTray = ({
@@ -27,15 +28,13 @@ const NotesTray = ({
   addNote,
   deleteProject,
   projects,
-  setNoteSelected,
+  setContentSelected,
   noteSelected,
 }) => {
   const [newNoteTitle, setNewNoteTitle] = useState("");
-  const [noteSelectedId, setNoteSelectedId] = useState(null);
 
-  const handleNoteSelected = (id) => {
-    setNoteSelected();
-    setNoteSelectedId(id);
+  const handleNoteSelected = (projectId, noteId) => {
+    setContentSelected(projectId, noteId);
   };
 
   const currentProject = projects.find(
@@ -64,7 +63,9 @@ const NotesTray = ({
               <li
                 key={note.noteId}
                 className={noteSelected ? "selected" : null}
-                onClick={() => handleNoteSelected(note.noteId)}
+                onClick={() =>
+                  handleNoteSelected(projectSelectedId, note.noteId)
+                }
               >
                 <Link to={`/projects/${projectSelectedId}/${note.noteId}`}>
                   <div className="notes-list-item">

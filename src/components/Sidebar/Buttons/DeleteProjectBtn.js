@@ -5,13 +5,7 @@ import { NewBtn } from "../Sidebar.styles";
 
 const DeleteProjectBtn = ({ deleteProject, projectSelectedId }) => {
   return (
-    <NewBtn
-      onClick={() =>
-        deleteProject({
-          projectSelectedId,
-        })
-      }
-    >
+    <NewBtn onClick={() => deleteProject(projectSelectedId)}>
       <div className="delete-item">
         <BsIcons.BsTrash />
       </div>

@@ -23,7 +23,11 @@ const INITIAL_STATE = {
     },
   ],
   deleted: [],
-  noteSelected: false,
+  contentSelected: {
+    noteSelected: false,
+    projectSelectedId: null,
+    noteSelectedId: null,
+  },
 };
 
 export const projectsReducer = (state = INITIAL_STATE, action) => {
@@ -33,10 +37,10 @@ export const projectsReducer = (state = INITIAL_STATE, action) => {
 
     case ActionTypes.DELETE_PROJECT:
       const deletedProject = state.projects.filter(
-        (project) => project.projectId === action.payload.projectSelectedId
+        (project) => project.projectId === action.payload
       );
       const updatedProjects = state.projects.filter(
-        (project) => project.projectId !== action.payload.projectSelectedId
+        (project) => project.projectId !== action.payload
       );
       console.log(deletedProject, updatedProjects);
       return {
@@ -55,7 +59,16 @@ export const projectsReducer = (state = INITIAL_STATE, action) => {
       return { ...state, projects: newProjectState };
 
     case ActionTypes.NOTE_SELECTED:
-      return { ...state, noteSelected: true };
+      const noteSelected = action.payload.noteId ? true : false;
+      return {
+        ...state,
+        contentSelected: {
+          ...state.contentSelected,
+          noteSelected: noteSelected,
+          projectSelectedId: action.payload.projectId,
+          noteSelectedId: action.payload.noteId,
+        },
+      };
     default:
       return state;
   }
