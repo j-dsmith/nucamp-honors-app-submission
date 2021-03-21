@@ -64,7 +64,7 @@ export const StyledNote = styled.div`
   }
 `;
 
-export const NoteTitle = styled.input`
+export const NewNoteTitle = styled.input`
   margin: 20px 0px 0px 8px;
   grid-column: 2 / span 6;
   grid-row: 1 / span 1;
@@ -76,6 +76,17 @@ export const NoteTitle = styled.input`
   &:focus {
     outline: none;
   }
+`;
+
+export const StaticNoteTitle = styled.h2`
+  margin: 20px 0px 0px 8px;
+  grid-column: 2 / span 6;
+  grid-row: 1 / span 1;
+  font-size: 2rem;
+  color: #333;
+  border: none;
+  font-weight: bold;
+  background: none;
 `;
 
 export const EditorButton = styled.span`

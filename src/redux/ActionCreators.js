@@ -15,6 +15,11 @@ export const addNote = (note) => ({
   payload: note,
 });
 
+export const updateNote = (updatedNote) => ({
+  type: ActionTypes.UPDATE_NOTE,
+  payload: updatedNote,
+});
+
 export const deleteNote = (id) => ({
   type: ActionTypes.DELETE_NOTE,
   payload: id,

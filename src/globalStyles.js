@@ -146,6 +146,11 @@ a:hover
   margin-right: 30px;
 }
 
+.ql-snow.ql-toolbar .ql-update {
+  float: right;
+  margin-right: 30px;
+}
+
 `;
 
 export default GlobalStyle;

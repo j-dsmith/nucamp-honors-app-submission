@@ -57,10 +57,8 @@ class SidebarTray extends Component {
       trayActive,
       projectsActive,
       notesActive,
-      setNotesActive,
       trashActive,
     } = this.props;
-    //destructure trayTypeVisible state object for view manipulating values
 
     const { projectSelectedId } = this.state;
 

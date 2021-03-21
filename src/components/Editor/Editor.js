@@ -2,12 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { StyledEditor, NoteTitle } from "./Editor.styles";
+import { StyledEditor, NewNoteTitle } from "./Editor.styles";
 import Toolbar from "./Toolbar";
+import { addNote, updateNote } from "../../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
-  noteSelected: state.noteSelected,
+  contentSelected: state.contentSelected,
+  editing: state.editing,
 });
+
+const mapDispatchToProps = {
+  addNote: (note) => addNote(note),
+  updateNote: (updatedNote) => updateNote(updatedNote),
+};
 
 class Editor extends Component {
   constructor(props) {
@@ -15,11 +22,30 @@ class Editor extends Component {
     this.state = {
       title: "",
       text: "",
+      noteId: null,
+      projectId: null,
     };
   }
   //focus title input on page load
   componentDidMount() {
     this.titleInput.focus();
+
+    this.setState({
+      title: this.props.selectedNote.title,
+      text: this.props.selectedNote.text,
+      noteId: this.props.selectedNote.noteId,
+      projectId: this.props.projectId,
+    });
+  }
+
+  componentDidUpdate() {
+    if (this.props.selectedNote.noteId !== this.state.noteId)
+      this.setState({
+        title: this.props.selectedNote.title,
+        text: this.props.selectedNote.text,
+        noteId: this.props.selectedNote.noteId,
+        projectId: this.props.projectId,
+      });
   }
 
   handleChange = (value) => {
@@ -28,8 +54,16 @@ class Editor extends Component {
 
   onClickSave = () => {
     const date = new Date().toLocaleDateString();
-    const id = Math.floor(Math.random() * 10000);
-    this.props.addNote({ id, ...this.state, date });
+    const noteId = Math.floor(Math.random() * 10000);
+    this.props.addNote({ ...this.state, date, noteId });
+  };
+
+  onClickUpdate = () => {
+    const updatedDate = new Date().toLocaleDateString();
+    this.props.updateNote({
+      ...this.state,
+      date: updatedDate,
+    });
   };
 
   modules = {
@@ -37,6 +71,7 @@ class Editor extends Component {
       container: "#toolbar",
       handlers: {
         save: this.onClickSave,
+        update: this.onClickUpdate,
       },
     },
   };
@@ -57,13 +92,9 @@ class Editor extends Component {
   ];
 
   render() {
-    //destructure noteSelected from redux state, selectedTitle/selectedText from currently selected note to render editor values
-    const { selectedTitle, selectedText, noteSelected } = this.props;
-    console.log(selectedText, selectedTitle);
-
     return (
       <>
-        <NoteTitle
+        <NewNoteTitle
           type="text"
           value={this.state.title}
           placeholder="Title"
@@ -87,4 +118,4 @@ class Editor extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Editor);
+export default connect(mapStateToProps, mapDispatchToProps)(Editor);
