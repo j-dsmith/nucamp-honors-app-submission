@@ -6,6 +6,7 @@ import {
   addProject,
   deleteProject,
   setContentSelected,
+  toggleDelete,
 } from "../../../redux/ActionCreators";
 
 import ProjectsTray from "./ProjectsTray";
@@ -25,6 +26,7 @@ const mapDispatchToProps = {
   deleteProject: (id) => deleteProject(id),
   setContentSelected: (projectId, noteId) =>
     setContentSelected(projectId, noteId),
+  toggleDelete: () => toggleDelete(),
 };
 
 class SidebarTray extends Component {
@@ -58,6 +60,7 @@ class SidebarTray extends Component {
       projectsActive,
       notesActive,
       trashActive,
+      toggleDelete,
     } = this.props;
 
     const { projectSelectedId } = this.state;
@@ -73,6 +76,7 @@ class SidebarTray extends Component {
           handleProjectSelected={this.handleProjectSelected}
           addProject={addProject}
           deleteProject={deleteProject}
+          toggleDelete={toggleDelete}
           projectsTray
         />
       );

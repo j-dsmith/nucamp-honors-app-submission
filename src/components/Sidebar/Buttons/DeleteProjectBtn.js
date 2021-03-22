@@ -1,16 +1,26 @@
 import React from "react";
+import { connect } from "react-redux";
 import * as BsIcons from "react-icons/bs";
-import { deleteProject } from "../../../redux/ActionCreators";
+import { toggleDelete } from "../../../redux/ActionCreators";
 import { NewBtn } from "../Sidebar.styles";
 
-const DeleteProjectBtn = ({ deleteProject, projectSelectedId }) => {
+const mapStateToProps = (state) => ({
+  deleted: state.projects.deleted,
+});
+
+const mapDispatchToProps = {
+  toggleDelete: () => toggleDelete(),
+};
+
+const DeleteProjectBtn = ({ toggleDelete, deleted }) => {
   return (
-    <NewBtn onClick={() => deleteProject(projectSelectedId)}>
-      <div className="delete-item">
-        <BsIcons.BsTrash />
-      </div>
+    <NewBtn
+      onClick={() => toggleDelete()}
+      deletedActive={deleted.deleteActive ? true : false}
+    >
+      <BsIcons.BsTrash className="delete-item" />
     </NewBtn>
   );
 };
 
-export default DeleteProjectBtn;
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteProjectBtn);

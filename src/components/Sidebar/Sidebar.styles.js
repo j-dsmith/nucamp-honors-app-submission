@@ -122,7 +122,7 @@ export const SidebarCard = styled.div`
       border-bottom: 1px solid #3d3d3d;
       color: #fcfaf9;
       cursor: pointer;
-      transition: background-color, color 0.2s ease;
+      transition: (background-color, color) 0.2s ease;
 
       &:hover {
         background-color: #292929;
@@ -132,6 +132,10 @@ export const SidebarCard = styled.div`
           transform: translateX(0);
 
           //add translate for arrow to slide right as it becomes visible
+        }
+
+        #x-icon-right {
+          opacity: 1;
         }
       }
 
@@ -150,6 +154,10 @@ export const SidebarCard = styled.div`
         &.hidden {
           display: none;
         }
+      }
+
+      .list-icon.trash {
+        color: #fcfaf9;
       }
 
       .project-list-item {
@@ -198,6 +206,12 @@ export const SidebarCard = styled.div`
         transform: translateX(-10px);
       }
 
+      #x-icon-right {
+        color: #fcfaf9;
+        transition: all 0.4s ease;
+        opacity: 0;
+      }
+
       #selected-icon-container {
         margin-left: auto;
       }
@@ -211,6 +225,12 @@ export const SidebarCard = styled.div`
         opacity: 0.85;
         transition: all 0.2s ease;
       }
+    }
+
+    li.delete-active {
+      background-color: #df3153;
+      transition: all 0.2s ease-in-out;
+      color: #fcfaf9;
     }
 
     li.active-note {
@@ -234,14 +254,14 @@ export const SidebarCard = styled.div`
 export const NewBtn = styled.div`
   border-radius: 50%;
   /* border: 1px solid #000; */
-  padding-top: 5px;
   margin: 15px 10px 10px 0;
   height: 30px;
   width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s ease;
+  background-color: ${(props) => (props.deletedActive ? "#df3153" : "none")};
+  transition: background-color 0.3s ease;
   cursor: pointer;
 
   .add-item {
@@ -249,19 +269,28 @@ export const NewBtn = styled.div`
     line-height: 30px;
     color: #48e5c2;
     font-size: 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
 
   .delete-item {
     display: inline-block;
     line-height: 30px;
-    color: #e5486a;
+    color: ${(props) => (props.deletedActive ? "#fcfaf9" : "#48e5c2")};
     font-size: 1rem;
-    text-align: center;
-    padding: 1px 0 0 1px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .trash-icon-btn {
+    color: #fcfaf9;
+    background-color: #df3153;
   }
 
   &:hover {
-    background: #292929;
+    background-color: ${(props) => (props.deletedActive ? "none" : "#292929")};
   }
 `;
 

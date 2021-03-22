@@ -21,13 +21,25 @@ const INITIAL_STATE = {
       ],
     },
   ],
-  deleted: [],
+  deleted: {
+    deleteActive: false,
+    deletedNotes: [],
+  },
 };
 
 export const ProjectsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ActionTypes.ADD_PROJECT:
       return { ...state, projects: state.projects.concat(action.payload) };
+
+    case ActionTypes.TOGGLE_DELETE:
+      return {
+        ...state,
+        deleted: {
+          ...state.deleted,
+          deleteActive: !state.deleted.deleteActive,
+        },
+      };
 
     case ActionTypes.DELETE_PROJECT:
       const deletedProject = state.projects.filter(
@@ -40,7 +52,11 @@ export const ProjectsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         projects: updatedProjects,
-        deleted: state.deleted.concat(deletedProject),
+        deleted: {
+          ...state.deleted,
+          deleteActive: true,
+          deletedNotes: deleted.deletedNotes.concat(deletedProject),
+        },
       };
 
     case ActionTypes.ADD_NOTE:

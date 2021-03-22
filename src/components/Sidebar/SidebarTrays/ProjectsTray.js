@@ -14,6 +14,7 @@ import DeleteProjectBtn from "../Buttons/DeleteProjectBtn";
 
 const mapStateToProps = (state) => ({
   projects: state.projects,
+  deleted: state.projects.deleted,
 });
 
 const ProjectsTray = ({
@@ -21,9 +22,10 @@ const ProjectsTray = ({
   trayActive,
   handleProjectSelected,
   addProject,
+  deleted,
+  deleteProject,
 }) => {
   const [newProjectTitle, setNewProjectTitle] = useState("");
-  console.log(projects);
 
   return (
     <StyledTray className={trayActive ? "tray-active" : null} projectsTray>
@@ -37,29 +39,50 @@ const ProjectsTray = ({
         <NewProjectBtn
           newProjectTitle={newProjectTitle}
           addProject={addProject}
+          deleteActive={deleted.deleteActive}
         />
+        <DeleteProjectBtn />
       </TrayHeading>
       <SidebarCard className="projects-tray fade">
         <ul>
           {projects.projects.map((project) => {
             return (
-              <li key={project.projectId}>
-                <Link to={`/projects/${project.projectId}`}>
-                  <div
-                    className="project-list-item"
-                    onClick={() => {
-                      handleProjectSelected(project.projectId);
-                    }}
-                  >
-                    <div className="list-icon">
-                      <BsIcons.BsFolder />
+              <li
+                key={project.projectId}
+                className={deleted.deleteActive ? "delete-active" : null}
+              >
+                {deleted.deleteActive ? (
+                  <div className="project-list-item">
+                    <div className="list-icon trash">
+                      <BsIcons.BsFolderMinus />
                     </div>
                     <h4 className="project-list-title">{project.title}</h4>
-                    <div className="list-icon" id="arrow-right">
-                      <BiIcons.BiRightArrowAlt />
+                    <div
+                      className="list-icon"
+                      id="x-icon-right"
+                      onClick={() => deleteProject(project.projectId)}
+                    >
+                      <BsIcons.BsX />
                     </div>
                   </div>
-                </Link>
+                ) : (
+                  <Link to={`/projects/${project.projectId}`}>
+                    <div
+                      className="project-list-item"
+                      onClick={() => {
+                        handleProjectSelected(project.projectId);
+                      }}
+                    >
+                      <div className="list-icon">
+                        <BsIcons.BsFolder />
+                      </div>
+                      <h4 className="project-list-title">{project.title}</h4>
+                      <div className="list-icon" id="arrow-right">
+                        <BiIcons.BiRightArrowAlt />
+                      </div>
+                    </div>
+                  </Link>
+                )}
               </li>
             );
           })}

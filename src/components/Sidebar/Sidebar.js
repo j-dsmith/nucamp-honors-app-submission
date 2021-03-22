@@ -12,10 +12,6 @@ import {
 import SidebarTray from "./SidebarTrays/SidebarTray";
 import { SidebarData } from "./SidebarData";
 
-// const mapStateToProps = (state) => ({
-//   noteSelected: state.noteSelected,
-// });
-
 const mapDispatchToProps = {};
 
 class Sidebar extends Component {
@@ -75,7 +71,7 @@ class Sidebar extends Component {
     }
   };
 
-  resetTray = () => {
+  handleHomeClick = () => {
     this.setState({
       trayActive: false,
       projectsActive: true,
@@ -118,12 +114,18 @@ class Sidebar extends Component {
                   </SidebarItem>
                 );
               }
-              return (
-                <SidebarItem to={`${path}`} key={index}>
-                  <SidebarIcon>{icon}</SidebarIcon>
-                  <SidebarLabel>{title}</SidebarLabel>
-                </SidebarItem>
-              );
+              if (title === "Home") {
+                return (
+                  <SidebarItem
+                    to={`${path}`}
+                    key={index}
+                    onClick={() => this.handleHomeClick()}
+                  >
+                    <SidebarIcon>{icon}</SidebarIcon>
+                    <SidebarLabel>{title}</SidebarLabel>
+                  </SidebarItem>
+                );
+              }
             })}
           </SidebarSection>
           <SidebarSection id="sidebar-tools"></SidebarSection>

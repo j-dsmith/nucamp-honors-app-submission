@@ -25,6 +25,10 @@ export const deleteNote = (id) => ({
   payload: id,
 });
 
+export const toggleDelete = () => ({
+  type: ActionTypes.TOGGLE_DELETE,
+});
+
 export const setContentSelected = (projectId, noteId) => ({
   type: ActionTypes.NOTE_SELECTED,
   payload: {

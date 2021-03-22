@@ -18,9 +18,7 @@ const NewNoteBtn = ({ projectSelectedId, newNoteTitle, addNote }) => {
       }
       className="new-note-btn"
     >
-      <div className="add-item">
-        <BsIcons.BsFilePlus />
-      </div>
+      <BsIcons.BsFilePlus className="add-item" />
     </NewBtn>
   );
 };
