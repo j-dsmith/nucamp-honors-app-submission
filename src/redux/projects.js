@@ -1,4 +1,3 @@
-import { deleteProject } from "./ActionCreators";
 import * as ActionTypes from "./ActionTypes";
 
 const INITIAL_STATE = {
@@ -23,14 +22,9 @@ const INITIAL_STATE = {
     },
   ],
   deleted: [],
-  contentSelected: {
-    isNoteSelected: false,
-    projectSelectedId: null,
-    noteSelectedId: null,
-  },
 };
 
-export const projectsReducer = (state = INITIAL_STATE, action) => {
+export const ProjectsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ActionTypes.ADD_PROJECT:
       return { ...state, projects: state.projects.concat(action.payload) };
@@ -93,21 +87,7 @@ export const projectsReducer = (state = INITIAL_STATE, action) => {
         projects: [...updatedProjectState],
       };
 
-    case ActionTypes.NOTE_SELECTED:
-      const noteSelected = action.payload.noteId ? true : false;
-      return {
-        ...state,
-        contentSelected: {
-          ...state.contentSelected,
-          isNoteSelected: noteSelected,
-          projectSelectedId: action.payload.projectId,
-          noteSelectedId: action.payload.noteId,
-        },
-      };
-
     default:
       return state;
   }
 };
-
-export default projectsReducer;

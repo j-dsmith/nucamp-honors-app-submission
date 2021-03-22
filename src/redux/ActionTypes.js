@@ -8,3 +8,6 @@ export const DELETE_PROJECT = "PROJECTS/DELETE_PROJECT";
 
 //sidebar visibility manipulation
 export const SHOW_TRAY = "SHOW_TRAY";
+
+//add daily goal
+export const ADD_GOAL = "ADD_GOAL";

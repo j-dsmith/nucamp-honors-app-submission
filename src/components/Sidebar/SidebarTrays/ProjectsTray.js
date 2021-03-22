@@ -41,7 +41,7 @@ const ProjectsTray = ({
       </TrayHeading>
       <SidebarCard className="projects-tray fade">
         <ul>
-          {projects.map((project) => {
+          {projects.projects.map((project) => {
             return (
               <li key={project.projectId}>
                 <Link to={`/projects/${project.projectId}`}>

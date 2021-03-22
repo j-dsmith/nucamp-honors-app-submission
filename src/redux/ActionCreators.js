@@ -32,3 +32,8 @@ export const setContentSelected = (projectId, noteId) => ({
     noteId,
   },
 });
+
+export const addGoal = (goal) => ({
+  type: ActionTypes.ADD_GOAL,
+  payload: goal,
+});

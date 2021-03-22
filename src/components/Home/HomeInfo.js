@@ -28,8 +28,8 @@ const HomeInfo = () => {
 
   //set greeting based on time of day
   let timeOfDay = "";
-  const getTimeOfDay = (time) => {
-    console.log(time);
+  const getTimeOfDay = () => {
+    const time = new Date().getHours();
 
     if (time > 0 && time < 12) {
       timeOfDay = "Morning";
@@ -41,7 +41,7 @@ const HomeInfo = () => {
     return timeOfDay;
   };
 
-  getTimeOfDay(time);
+  getTimeOfDay();
 
   //handle enter key event
   const handleEnter = (e) => {

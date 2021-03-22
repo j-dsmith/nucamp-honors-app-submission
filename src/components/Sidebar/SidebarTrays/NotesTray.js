@@ -44,7 +44,7 @@ const NotesTray = ({
     return str.replace(/<[^>]*>?/gm, "");
   };
 
-  const currentProject = projects.find(
+  const currentProject = projects.projects.find(
     (project) => project.projectId === projectSelectedId
   );
 

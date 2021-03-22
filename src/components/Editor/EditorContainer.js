@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 const EditorContainer = ({ projects, contentSelected }) => {
   const { isNoteSelected, noteSelectedId, projectSelectedId } = contentSelected;
 
-  const selectedNote = projects
+  const selectedNote = projects.projects
     .find((project) => project.projectId === projectSelectedId)
     .notes.find((note) => note.noteId === noteSelectedId);
 
