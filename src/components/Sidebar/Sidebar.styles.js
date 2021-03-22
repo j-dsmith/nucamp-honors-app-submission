@@ -135,23 +135,9 @@ export const SidebarCard = styled.div`
         }
       }
 
-      &.selected {
-        background-color: #48e5c2;
-        color: #292929;
-      }
-
       p {
-        //truncate display of content to one line
-        //! study before submission - add to notes for understanding/explanation
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
         color: rgba(252, 250, 249, 0.85);
         font-size: 0.85rem;
-
-        &.selected {
-          color: #3d3d3d;
-        }
       }
 
       .list-icon {
@@ -197,6 +183,10 @@ export const SidebarCard = styled.div`
         text-decoration: none;
       }
 
+      .selected-note {
+        opacity: 1;
+      }
+
       #creation-date {
         font-size: 0.75rem;
       }
@@ -206,6 +196,20 @@ export const SidebarCard = styled.div`
         transition: all 0.4s ease;
         opacity: 0;
         transform: translateX(-10px);
+      }
+
+      #selected-icon-container {
+        margin-left: auto;
+      }
+
+      #selected-dot {
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        background-color: #48e5c2;
+        justify-self: center;
+        opacity: 0.85;
+        transition: all 0.2s ease;
       }
     }
 

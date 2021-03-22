@@ -43,8 +43,8 @@ const ProjectsTray = ({
         <ul>
           {projects.map((project) => {
             return (
-              <Link to={`/projects/${project.projectId}`}>
-                <li key={project.projectId}>
+              <li key={project.projectId}>
+                <Link to={`/projects/${project.projectId}`}>
                   <div
                     className="project-list-item"
                     onClick={() => {
@@ -59,8 +59,8 @@ const ProjectsTray = ({
                       <BiIcons.BiRightArrowAlt />
                     </div>
                   </div>
-                </li>
-              </Link>
+                </Link>
+              </li>
             );
           })}
         </ul>

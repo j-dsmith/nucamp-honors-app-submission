@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import { addNote, deleteNote } from "../redux/ActionCreators";
 import Sidebar from "./Sidebar/Sidebar";
-import Editor from "./Editor/Editor";
+import HomeInfo from "./Home/HomeInfo";
 import EditorContainer from "./Editor/EditorContainer";
 
 const mapStateToProps = (state) => ({
@@ -31,7 +31,7 @@ class Main extends Component {
         <Sidebar />
         {/* create routes here, home - projects, notes (note id for custom param routes), trash */}
         <Switch>
-          <Route path="/home" />
+          <Route path="/home" render={() => <HomeInfo />} />
 
           <Route exact path="/projects" />
           <Route

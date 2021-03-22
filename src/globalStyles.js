@@ -143,7 +143,7 @@ a:hover
 
 .ql-snow.ql-toolbar .ql-save {
   float: right;
-  margin-right: 30px;
+  margin-right: 35px;
 }
 
 .ql-snow.ql-toolbar .ql-update {

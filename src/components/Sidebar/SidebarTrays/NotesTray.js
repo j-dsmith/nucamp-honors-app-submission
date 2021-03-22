@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as BsIcons from "react-icons/bs";
+import ReactHtmlParser from "react-html-parser";
 import {
   SidebarCard,
   StyledTray,
@@ -14,7 +15,7 @@ import { setContentSelected } from "../../../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
   projects: state.projects,
-  noteSelected: state.noteSelected,
+  contentSelected: state.contentSelected,
 });
 
 const mapDispatchToProps = {
@@ -29,12 +30,18 @@ const NotesTray = ({
   deleteProject,
   projects,
   setContentSelected,
-  noteSelected,
+  contentSelected,
 }) => {
   const [newNoteTitle, setNewNoteTitle] = useState("");
 
   const handleNoteSelected = (projectId, noteId) => {
     setContentSelected(projectId, noteId);
+  };
+
+  //helper regex function for removing html tags,
+  //source: freecodecamp - Intermediate React and Firebase Tutorial - Build an Evernote Clone (https://www.youtube.com/watch?v=I250xdtUvy8&t=3763s)
+  const removeHtmlTags = (str) => {
+    return str.replace(/<[^>]*>?/gm, "");
   };
 
   const currentProject = projects.find(
@@ -62,25 +69,27 @@ const NotesTray = ({
             return (
               <li
                 key={note.noteId}
-                className={noteSelected ? "selected" : null}
                 onClick={() =>
                   handleNoteSelected(projectSelectedId, note.noteId)
                 }
               >
                 <Link to={`/projects/${projectSelectedId}/${note.noteId}`}>
                   <div className="notes-list-item">
-                    <div
-                      className={`list-icon ${noteSelected ? "hidden" : null}`}
-                    >
+                    <div className={`list-icon`}>
                       <BsIcons.BsFileText />
                     </div>
                     <div className="notes-list-content">
                       <h4 className="notes-list-title">{note.title}</h4>
 
-                      <p className={noteSelected ? "selected" : null}>
-                        {noteSelected ? note.dateCreated : note.text}
+                      <p>
+                        {removeHtmlTags(note.text.substring(0, 20)) + "..."}
                       </p>
                     </div>
+                    {contentSelected.noteSelectedId === note.noteId ? (
+                      <div className="list-icon" id="selected-icon-container">
+                        <BsIcons.BsDot id="selected-dot" />
+                      </div>
+                    ) : null}
                   </div>
                 </Link>
               </li>

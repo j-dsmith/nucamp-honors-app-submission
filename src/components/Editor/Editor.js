@@ -53,12 +53,6 @@ class Editor extends Component {
   };
 
   onClickSave = () => {
-    const date = new Date().toLocaleDateString();
-    const noteId = Math.floor(Math.random() * 10000);
-    this.props.addNote({ ...this.state, date, noteId });
-  };
-
-  onClickUpdate = () => {
     const updatedDate = new Date().toLocaleDateString();
     this.props.updateNote({
       ...this.state,
@@ -71,7 +65,7 @@ class Editor extends Component {
       container: "#toolbar",
       handlers: {
         save: this.onClickSave,
-        update: this.onClickUpdate,
+        // update: this.onClickUpdate,
       },
     },
   };

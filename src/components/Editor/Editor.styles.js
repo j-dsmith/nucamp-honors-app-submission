@@ -93,6 +93,7 @@ export const EditorButton = styled.span`
   background-color: #333;
   color: #48e5c2;
   border: none;
+  font-size: 1rem;
   border-radius: 5px 15px 5px 15px;
   cursor: pointer;
   padding: 5px 10px;

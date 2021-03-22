@@ -59,27 +59,34 @@ export const projectsReducer = (state = INITIAL_STATE, action) => {
       return { ...state, projects: newProjectState };
 
     case ActionTypes.UPDATE_NOTE:
+      //get current project from projects by matching payload project id
       const currentProject = state.projects.find(
         (project) => project.projectId === action.payload.projectId
       );
+      //get current note from current project by matching payload note id
       const currentNote = currentProject.notes.find(
         (note) => note.noteId === action.payload.noteId
       );
 
+      //map through projects, if a project matches current project -> return new copy with notes array modified
       const updatedProjectState = state.projects.map((project) => {
         if (project.projectId === currentProject.projectId) {
           return {
             ...project,
+            //modify notes array by mapping and finding matching id like above, if match found return new note obj with payload spread in
             notes: project.notes.map((note) => {
               if (note.noteId === currentNote.noteId) {
                 return { ...note, ...action.payload };
               }
+              //no match found, return the note unmodified
               return note;
             }),
           };
         }
+        //no match found, return the project unmodified
         return project;
       });
+      //after updates, return the state, set content selected to true so note remains rendered, return updated projects with note modified from above
       return {
         ...state,
         contentSelected: { ...state.contentSelected, isNoteSelected: true },

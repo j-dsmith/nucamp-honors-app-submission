@@ -24,9 +24,9 @@ const Toolbar = () => {
       <button className="ql-save">
         <EditorButton id="save-note">Save</EditorButton>
       </button>
-      <button className="ql-update">
+      {/* <button className="ql-update">
         <EditorButton id="update-note">Update</EditorButton>
-      </button>
+      </button> */}
     </div>
   );
 };

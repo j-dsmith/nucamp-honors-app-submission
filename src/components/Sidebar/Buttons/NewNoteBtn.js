@@ -13,7 +13,7 @@ const NewNoteBtn = ({ projectSelectedId, newNoteTitle, addNote }) => {
           noteId: id,
           title: newNoteTitle,
           text: "",
-          dateCreated: date,
+          date: date,
         })
       }
       className="new-note-btn"
@@ -26,3 +26,10 @@ const NewNoteBtn = ({ projectSelectedId, newNoteTitle, addNote }) => {
 };
 
 export default NewNoteBtn;
+
+//? from editor, old save button before moving logic to button
+// onClickSave = () => {
+//   const date = new Date().toLocaleDateString();
+//   const noteId = Math.floor(Math.random() * 10000);
+//   this.props.addNote({ ...this.state, date, noteId });
+// };

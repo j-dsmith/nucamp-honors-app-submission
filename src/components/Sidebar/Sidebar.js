@@ -75,9 +75,18 @@ class Sidebar extends Component {
     }
   };
 
+  resetTray = () => {
+    this.setState({
+      trayActive: false,
+      projectsActive: true,
+      notesActive: false,
+    });
+  };
+
   render() {
     //destructure state variables
     const { trayActive, projectsActive, notesActive, trashActive } = this.state;
+
     return (
       <SidebarContainer>
         <StyledSidebar>
