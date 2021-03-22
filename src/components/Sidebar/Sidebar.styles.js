@@ -156,7 +156,7 @@ export const SidebarCard = styled.div`
         }
       }
 
-      .list-icon.trash {
+      .list-icon.minus {
         color: #fcfaf9;
       }
 
@@ -210,6 +210,7 @@ export const SidebarCard = styled.div`
         color: #fcfaf9;
         transition: all 0.4s ease;
         opacity: 0;
+        margin-left: auto;
       }
 
       #selected-icon-container {

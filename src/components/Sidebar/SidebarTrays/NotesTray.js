@@ -11,10 +11,11 @@ import {
 } from "../Sidebar.styles";
 import NewNoteBtn from "../Buttons/NewNoteBtn";
 import DeleteProjectBtn from "../Buttons/DeleteProjectBtn";
-import { setContentSelected } from "../../../redux/ActionCreators";
+import { deleteNote, setContentSelected } from "../../../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
   projects: state.projects,
+  deleted: state.projects.deleted,
   contentSelected: state.contentSelected,
 });
 
@@ -27,7 +28,8 @@ const NotesTray = ({
   projectSelectedId,
   trayActive,
   addNote,
-  deleteProject,
+  deleted,
+  deleteNote,
   projects,
   setContentSelected,
   contentSelected,
@@ -61,7 +63,9 @@ const NotesTray = ({
           projectSelectedId={projectSelectedId}
           newNoteTitle={newNoteTitle}
           addNote={addNote}
+          deleteActive={deleted.deleteActive}
         />
+        <DeleteProjectBtn />
       </TrayHeading>
       <SidebarCard className="projects-tray fade">
         <ul>
@@ -69,29 +73,53 @@ const NotesTray = ({
             return (
               <li
                 key={note.noteId}
-                onClick={() =>
-                  handleNoteSelected(projectSelectedId, note.noteId)
-                }
+                className={deleted.deleteActive ? "delete-active" : null}
               >
-                <Link to={`/projects/${projectSelectedId}/${note.noteId}`}>
+                {deleted.deleteActive ? (
                   <div className="notes-list-item">
-                    <div className={`list-icon`}>
-                      <BsIcons.BsFileText />
+                    <div className="list-icon minus">
+                      <BsIcons.BsFileMinus />
                     </div>
                     <div className="notes-list-content">
                       <h4 className="notes-list-title">{note.title}</h4>
-
                       <p>
                         {removeHtmlTags(note.text.substring(0, 20)) + "..."}
                       </p>
                     </div>
-                    {contentSelected.noteSelectedId === note.noteId ? (
-                      <div className="list-icon" id="selected-icon-container">
-                        <BsIcons.BsDot id="selected-dot" />
-                      </div>
-                    ) : null}
+
+                    <div
+                      className="list-icon"
+                      id="x-icon-right"
+                      onClick={() => deleteNote(projectSelectedId, note.noteId)}
+                    >
+                      <BsIcons.BsX />
+                    </div>
                   </div>
-                </Link>
+                ) : (
+                  <Link to={`/projects/${projectSelectedId}/${note.noteId}`}>
+                    <div
+                      className="notes-list-item"
+                      onClick={() =>
+                        handleNoteSelected(projectSelectedId, note.noteId)
+                      }
+                    >
+                      <div className={`list-icon`}>
+                        <BsIcons.BsFileText />
+                      </div>
+                      <div className="notes-list-content">
+                        <h4 className="notes-list-title">{note.title}</h4>
+                        <p>
+                          {removeHtmlTags(note.text.substring(0, 20)) + "..."}
+                        </p>
+                      </div>
+                      {contentSelected.noteSelectedId === note.noteId ? (
+                        <div className="list-icon" id="selected-icon-container">
+                          <BsIcons.BsDot id="selected-dot" />
+                        </div>
+                      ) : null}
+                    </div>
+                  </Link>
+                )}
               </li>
             );
           })}

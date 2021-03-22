@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import {
   addNote,
   addProject,
+  deleteNote,
   deleteProject,
   setContentSelected,
   toggleDelete,
@@ -22,6 +23,7 @@ const mapStateToProps = (state) => {
 //map dispatch to props for adding notes/projects
 const mapDispatchToProps = {
   addNote: (note) => addNote(note),
+  deleteNote: (projectId, noteId) => deleteNote(projectId, noteId),
   addProject: (project) => addProject(project),
   deleteProject: (id) => deleteProject(id),
   setContentSelected: (projectId, noteId) =>
@@ -56,11 +58,12 @@ class SidebarTray extends Component {
       addProject,
       addNote,
       deleteProject,
+      deleteNote,
+      toggleDelete,
       trayActive,
       projectsActive,
       notesActive,
       trashActive,
-      toggleDelete,
     } = this.props;
 
     const { projectSelectedId } = this.state;
@@ -87,6 +90,7 @@ class SidebarTray extends Component {
           projectSelectedId={projectSelectedId}
           trayActive={trayActive}
           addNote={addNote}
+          deleteNote={deleteNote}
           projectsTray
         />
       );

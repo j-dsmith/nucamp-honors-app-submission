@@ -33,7 +33,7 @@ const HomeInfo = () => {
 
     if (time > 0 && time < 12) {
       timeOfDay = "Morning";
-    } else if (time > 12 && time < 6) {
+    } else if (time >= 12 && time <= 18) {
       timeOfDay = "Afternoon";
     } else {
       timeOfDay = "Evening";

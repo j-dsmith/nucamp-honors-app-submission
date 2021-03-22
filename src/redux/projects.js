@@ -55,18 +55,38 @@ export const ProjectsReducer = (state = INITIAL_STATE, action) => {
         deleted: {
           ...state.deleted,
           deleteActive: true,
-          deletedNotes: deleted.deletedNotes.concat(deletedProject),
+          deletedNotes: state.deleted.deletedNotes.concat(deletedProject),
         },
       };
 
     case ActionTypes.ADD_NOTE:
+      //find project matching action.payload.projectId in projects state
       const newProjectState = state.projects.map((project) => {
         if (project.projectId === action.payload.projectId) {
+          //if the project matches update notes array in selected project with new note
           return { ...project, notes: project.notes.concat(action.payload) };
         }
         return project;
       });
       return { ...state, projects: newProjectState };
+
+    case ActionTypes.DELETE_NOTE:
+      //! add logic for putting deleted note in deleted array state
+      //find project matching action.payload.projectId in projects state
+      const newDeletedState = state.projects.map((project) => {
+        if (project.projectId === action.payload.projectId) {
+          //if match is found, filter notes array of selected project to include all but note matching
+          //action.payload.noteId, effectively deleting note
+          return {
+            ...project,
+            notes: project.notes.filter(
+              (note) => note.noteId !== action.payload.noteId
+            ),
+          };
+        }
+        return project;
+      });
+      return { ...state, projects: newDeletedState };
 
     case ActionTypes.UPDATE_NOTE:
       //get current project from projects by matching payload project id

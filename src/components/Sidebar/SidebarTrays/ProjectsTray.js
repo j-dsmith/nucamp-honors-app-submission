@@ -53,7 +53,7 @@ const ProjectsTray = ({
               >
                 {deleted.deleteActive ? (
                   <div className="project-list-item">
-                    <div className="list-icon trash">
+                    <div className="list-icon minus">
                       <BsIcons.BsFolderMinus />
                     </div>
                     <h4 className="project-list-title">{project.title}</h4>
@@ -69,9 +69,7 @@ const ProjectsTray = ({
                   <Link to={`/projects/${project.projectId}`}>
                     <div
                       className="project-list-item"
-                      onClick={() => {
-                        handleProjectSelected(project.projectId);
-                      }}
+                      onClick={() => handleProjectSelected(project.projectId)}
                     >
                       <div className="list-icon">
                         <BsIcons.BsFolder />

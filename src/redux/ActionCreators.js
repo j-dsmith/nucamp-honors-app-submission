@@ -20,9 +20,12 @@ export const updateNote = (updatedNote) => ({
   payload: updatedNote,
 });
 
-export const deleteNote = (id) => ({
+export const deleteNote = (projectId, noteId) => ({
   type: ActionTypes.DELETE_NOTE,
-  payload: id,
+  payload: {
+    projectId,
+    noteId,
+  },
 });
 
 export const toggleDelete = () => ({

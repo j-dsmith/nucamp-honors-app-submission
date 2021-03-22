@@ -2,22 +2,30 @@ import React from "react";
 import * as BsIcons from "react-icons/bs";
 import { NewBtn } from "../Sidebar.styles";
 
-const NewNoteBtn = ({ projectSelectedId, newNoteTitle, addNote }) => {
+const NewNoteBtn = ({
+  projectSelectedId,
+  newNoteTitle,
+  addNote,
+  deleteActive,
+}) => {
   const id = Math.floor(Math.random() * 10000);
   const date = new Date().toLocaleDateString("en-US");
+
+  const handleClick = () => {
+    if (deleteActive) {
+      return null;
+    }
+    return addNote({
+      projectId: projectSelectedId,
+      noteId: id,
+      title: newNoteTitle,
+      text: "",
+      date: date,
+    });
+  };
+
   return (
-    <NewBtn
-      onClick={() =>
-        addNote({
-          projectId: projectSelectedId,
-          noteId: id,
-          title: newNoteTitle,
-          text: "",
-          date: date,
-        })
-      }
-      className="new-note-btn"
-    >
+    <NewBtn onClick={() => handleClick()} className="new-note-btn">
       <BsIcons.BsFilePlus className="add-item" />
     </NewBtn>
   );
