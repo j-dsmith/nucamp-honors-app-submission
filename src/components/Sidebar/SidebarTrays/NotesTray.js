@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as BsIcons from "react-icons/bs";
-import ReactHtmlParser from "react-html-parser";
+import { Scrollbars } from "react-custom-scrollbars";
 import {
   SidebarCard,
   StyledTray,
@@ -52,59 +52,34 @@ const NotesTray = ({
 
   return (
     <StyledTray className={trayActive ? "tray-active" : null} projectsTray>
-      <h2>{currentProject.title}</h2>
-      <TrayHeading>
-        <NewItemInput
-          placeholder="New Note"
-          value={newNoteTitle}
-          onChange={(e) => setNewNoteTitle(e.target.value)}
-        />
-        <NewNoteBtn
-          projectSelectedId={projectSelectedId}
-          newNoteTitle={newNoteTitle}
-          addNote={addNote}
-          deleteActive={deleted.deleteActive}
-        />
-        <DeleteProjectBtn />
-      </TrayHeading>
-      <SidebarCard className="projects-tray fade">
-        <ul>
-          {currentProject.notes.map((note) => {
-            return (
-              <li
-                key={note.noteId}
-                className={deleted.deleteActive ? "delete-active" : null}
-              >
-                {deleted.deleteActive ? (
-                  <div className="notes-list-item">
-                    <div className="list-icon minus">
-                      <BsIcons.BsFileMinus />
-                    </div>
-                    <div className="notes-list-content">
-                      <h4 className="notes-list-title">{note.title}</h4>
-                      <p>
-                        {removeHtmlTags(note.text.substring(0, 20)) + "..."}
-                      </p>
-                    </div>
-
-                    <div
-                      className="list-icon"
-                      id="x-icon-right"
-                      onClick={() => deleteNote(projectSelectedId, note.noteId)}
-                    >
-                      <BsIcons.BsX />
-                    </div>
-                  </div>
-                ) : (
-                  <Link to={`/projects/${projectSelectedId}/${note.noteId}`}>
-                    <div
-                      className="notes-list-item"
-                      onClick={() =>
-                        handleNoteSelected(projectSelectedId, note.noteId)
-                      }
-                    >
-                      <div className={`list-icon`}>
-                        <BsIcons.BsFileText />
+      <Scrollbars>
+        <h2>{currentProject.title}</h2>
+        <TrayHeading>
+          <NewItemInput
+            placeholder="New Note"
+            value={newNoteTitle}
+            onChange={(e) => setNewNoteTitle(e.target.value)}
+          />
+          <NewNoteBtn
+            projectSelectedId={projectSelectedId}
+            newNoteTitle={newNoteTitle}
+            addNote={addNote}
+            deleteActive={deleted.deleteActive}
+          />
+          <DeleteProjectBtn />
+        </TrayHeading>
+        <SidebarCard className="projects-tray fade">
+          <ul>
+            {currentProject.notes.map((note) => {
+              return (
+                <li
+                  key={note.noteId}
+                  className={deleted.deleteActive ? "delete-active" : null}
+                >
+                  {deleted.deleteActive ? (
+                    <div className="notes-list-item">
+                      <div className="list-icon minus">
+                        <BsIcons.BsFileMinus />
                       </div>
                       <div className="notes-list-content">
                         <h4 className="notes-list-title">{note.title}</h4>
@@ -112,19 +87,51 @@ const NotesTray = ({
                           {removeHtmlTags(note.text.substring(0, 20)) + "..."}
                         </p>
                       </div>
-                      {contentSelected.noteSelectedId === note.noteId ? (
-                        <div className="list-icon" id="selected-icon-container">
-                          <BsIcons.BsDot id="selected-dot" />
-                        </div>
-                      ) : null}
+
+                      <div
+                        className="list-icon"
+                        id="x-icon-right"
+                        onClick={() =>
+                          deleteNote(projectSelectedId, note.noteId)
+                        }
+                      >
+                        <BsIcons.BsX />
+                      </div>
                     </div>
-                  </Link>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </SidebarCard>
+                  ) : (
+                    <Link to={`/projects/${projectSelectedId}/${note.noteId}`}>
+                      <div
+                        className="notes-list-item"
+                        onClick={() =>
+                          handleNoteSelected(projectSelectedId, note.noteId)
+                        }
+                      >
+                        <div className={`list-icon`}>
+                          <BsIcons.BsFileText />
+                        </div>
+                        <div className="notes-list-content">
+                          <h4 className="notes-list-title">{note.title}</h4>
+                          <p>
+                            {removeHtmlTags(note.text.substring(0, 20)) + "..."}
+                          </p>
+                        </div>
+                        {contentSelected.noteSelectedId === note.noteId ? (
+                          <div
+                            className="list-icon"
+                            id="selected-icon-container"
+                          >
+                            <BsIcons.BsDot id="selected-dot" />
+                          </div>
+                        ) : null}
+                      </div>
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </SidebarCard>
+      </Scrollbars>
     </StyledTray>
   );
 };

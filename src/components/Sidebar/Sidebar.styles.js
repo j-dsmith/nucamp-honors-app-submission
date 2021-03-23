@@ -45,7 +45,6 @@ export const StyledTray = styled.div`
   height: 100%;
   transition: all 0.3s ease;
   padding-left: 25px;
-  overflow-y: scroll;
 
   h2 {
     margin: 10px;

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as BsIcons from "react-icons/bs";
 import * as BiIcons from "react-icons/bi";
+import { Scrollbars } from "react-custom-scrollbars";
 import {
   SidebarCard,
   StyledTray,
@@ -29,63 +30,65 @@ const ProjectsTray = ({
 
   return (
     <StyledTray className={trayActive ? "tray-active" : null} projectsTray>
-      <h2>Projects</h2>
-      <TrayHeading>
-        <NewItemInput
-          placeholder="New Project"
-          value={newProjectTitle}
-          onChange={(e) => setNewProjectTitle(e.target.value)}
-        />
-        <NewProjectBtn
-          newProjectTitle={newProjectTitle}
-          addProject={addProject}
-          deleteActive={deleted.deleteActive}
-        />
-        <DeleteProjectBtn />
-      </TrayHeading>
-      <SidebarCard className="projects-tray fade">
-        <ul>
-          {projects.projects.map((project) => {
-            return (
-              <li
-                key={project.projectId}
-                className={deleted.deleteActive ? "delete-active" : null}
-              >
-                {deleted.deleteActive ? (
-                  <div className="project-list-item">
-                    <div className="list-icon minus">
-                      <BsIcons.BsFolderMinus />
-                    </div>
-                    <h4 className="project-list-title">{project.title}</h4>
-                    <div
-                      className="list-icon"
-                      id="x-icon-right"
-                      onClick={() => deleteProject(project.projectId)}
-                    >
-                      <BsIcons.BsX />
-                    </div>
-                  </div>
-                ) : (
-                  <Link to={`/projects/${project.projectId}`}>
-                    <div
-                      className="project-list-item"
-                      onClick={() => handleProjectSelected(project.projectId)}
-                    >
-                      <div className="list-icon">
-                        <BsIcons.BsFolder />
+      <Scrollbars>
+        <h2>Projects</h2>
+        <TrayHeading>
+          <NewItemInput
+            placeholder="New Project"
+            value={newProjectTitle}
+            onChange={(e) => setNewProjectTitle(e.target.value)}
+          />
+          <NewProjectBtn
+            newProjectTitle={newProjectTitle}
+            addProject={addProject}
+            deleteActive={deleted.deleteActive}
+          />
+          <DeleteProjectBtn />
+        </TrayHeading>
+        <SidebarCard className="projects-tray fade">
+          <ul>
+            {projects.projects.map((project) => {
+              return (
+                <li
+                  key={project.projectId}
+                  className={deleted.deleteActive ? "delete-active" : null}
+                >
+                  {deleted.deleteActive ? (
+                    <div className="project-list-item">
+                      <div className="list-icon minus">
+                        <BsIcons.BsFolderMinus />
                       </div>
                       <h4 className="project-list-title">{project.title}</h4>
-                      <div className="list-icon" id="arrow-right">
-                        <BiIcons.BiRightArrowAlt />
+                      <div
+                        className="list-icon"
+                        id="x-icon-right"
+                        onClick={() => deleteProject(project.projectId)}
+                      >
+                        <BsIcons.BsX />
                       </div>
                     </div>
-                  </Link>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </SidebarCard>
+                  ) : (
+                    <Link to={`/projects/${project.projectId}`}>
+                      <div
+                        className="project-list-item"
+                        onClick={() => handleProjectSelected(project.projectId)}
+                      >
+                        <div className="list-icon">
+                          <BsIcons.BsFolder />
+                        </div>
+                        <h4 className="project-list-title">{project.title}</h4>
+                        <div className="list-icon" id="arrow-right">
+                          <BiIcons.BiRightArrowAlt />
+                        </div>
+                      </div>
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </SidebarCard>
+      </Scrollbars>
     </StyledTray>
   );
 };
