@@ -10,8 +10,12 @@ import {
   NewItemInput,
 } from "../Sidebar.styles";
 import NewNoteBtn from "../Buttons/NewNoteBtn";
-import DeleteProjectBtn from "../Buttons/DeleteProjectBtn";
-import { deleteNote, setContentSelected } from "../../../redux/ActionCreators";
+import DeleteBtn from "../Buttons/DeleteBtn";
+import {
+  addNote,
+  deleteNote,
+  setContentSelected,
+} from "../../../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
   projects: state.projects,
@@ -22,6 +26,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   setContentSelected: (projectId, noteId) =>
     setContentSelected(projectId, noteId),
+  addNote: (note) => addNote(note),
+  deleteNote: (projectId, noteId) => deleteNote(projectId, noteId),
 };
 
 const NotesTray = ({
@@ -66,7 +72,7 @@ const NotesTray = ({
             addNote={addNote}
             deleteActive={deleted.deleteActive}
           />
-          <DeleteProjectBtn />
+          <DeleteBtn />
         </TrayHeading>
         <SidebarCard className="projects-tray fade">
           <ul>

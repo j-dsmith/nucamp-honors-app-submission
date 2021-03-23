@@ -1,14 +1,6 @@
 import React, { Component } from "react";
-import ReactHtmlParser from "react-html-parser";
 import { connect } from "react-redux";
-import {
-  addNote,
-  addProject,
-  deleteNote,
-  deleteProject,
-  setContentSelected,
-  toggleDelete,
-} from "../../../redux/ActionCreators";
+import { setContentSelected } from "../../../redux/ActionCreators";
 
 import ProjectsTray from "./ProjectsTray";
 import NotesTray from "./NotesTray";
@@ -22,13 +14,8 @@ const mapStateToProps = (state) => {
 };
 //map dispatch to props for adding notes/projects
 const mapDispatchToProps = {
-  addNote: (note) => addNote(note),
-  deleteNote: (projectId, noteId) => deleteNote(projectId, noteId),
-  addProject: (project) => addProject(project),
-  deleteProject: (id) => deleteProject(id),
   setContentSelected: (projectId, noteId) =>
     setContentSelected(projectId, noteId),
-  toggleDelete: () => toggleDelete(),
 };
 
 class SidebarTray extends Component {
@@ -54,17 +41,7 @@ class SidebarTray extends Component {
   render() {
     //bring in trayVisible from store which holds active, showProjects, showNotes
     //bring in projects from store and addProject dispatch from store
-    const {
-      addProject,
-      addNote,
-      deleteProject,
-      deleteNote,
-      toggleDelete,
-      trayActive,
-      projectsActive,
-      notesActive,
-      trashActive,
-    } = this.props;
+    const { trayActive, projectsActive, notesActive, trashActive } = this.props;
 
     const { projectSelectedId } = this.state;
 
@@ -77,9 +54,6 @@ class SidebarTray extends Component {
         <ProjectsTray
           trayActive={trayActive}
           handleProjectSelected={this.handleProjectSelected}
-          addProject={addProject}
-          deleteProject={deleteProject}
-          toggleDelete={toggleDelete}
           projectsTray
         />
       );
@@ -89,8 +63,6 @@ class SidebarTray extends Component {
         <NotesTray
           projectSelectedId={projectSelectedId}
           trayActive={trayActive}
-          addNote={addNote}
-          deleteNote={deleteNote}
           projectsTray
         />
       );

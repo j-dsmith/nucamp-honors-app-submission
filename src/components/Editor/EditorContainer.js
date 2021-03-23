@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { StyledContainer, StyledNote } from "./Editor.styles";
+import { StyledContainer } from "./Editor.styles";
 import Editor from "./Editor";
 
 const mapStateToProps = (state) => ({

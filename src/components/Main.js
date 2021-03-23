@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
-import { addNote, deleteNote } from "../redux/ActionCreators";
 import Sidebar from "./Sidebar/Sidebar";
 import HomeInfo from "./Home/HomeInfo";
 import EditorContainer from "./Editor/EditorContainer";
@@ -11,21 +10,8 @@ const mapStateToProps = (state) => ({
   contentSelected: state.contentSelected,
 });
 
-const mapDispatchToProps = {
-  addNote: (text) => addNote(text),
-  deleteNote: (id) => deleteNote(id),
-};
-
 class Main extends Component {
   render() {
-    const {
-      active,
-      showProjects,
-      showNotes,
-      noteSelected,
-      projects,
-    } = this.props;
-
     return (
       <div className={"grid-container"}>
         <Sidebar />
@@ -49,4 +35,4 @@ class Main extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps)(Main);

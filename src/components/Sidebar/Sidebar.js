@@ -30,7 +30,7 @@ class Sidebar extends Component {
   };
 
   handleProjectsClick = () => {
-    const { trayActive, projectsActive, notesActive, trashActive } = this.state;
+    const { trayActive, projectsActive, notesActive } = this.state;
     if (!trayActive) {
       //if tray is not active, activate it with projects showing
       this.setState({
@@ -58,7 +58,7 @@ class Sidebar extends Component {
   };
 
   handleTrashClick = () => {
-    const { trayActive, projectsActive, notesActive, trashActive } = this.state;
+    const { trayActive, trashActive } = this.state;
     console.log("clicked trash");
     if (!trayActive) {
       this.setState({ trashActive: true });

@@ -9,7 +9,7 @@ export const ConfigureStore = () => {
     combineReducers({
       projects: ProjectsReducer,
       contentSelected: SelectedReducer,
-      goals: GoalsReducer,
+      dailyGoal: GoalsReducer,
     }),
     applyMiddleware(logger)
   );

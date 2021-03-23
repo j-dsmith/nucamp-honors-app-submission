@@ -44,7 +44,7 @@ export const StyledTray = styled.div`
   width: 300px;
   height: 100%;
   transition: all 0.3s ease;
-  padding-left: 25px;
+  padding: 15px 0 15px 25px;
 
   h2 {
     margin: 10px;
@@ -145,14 +145,9 @@ export const SidebarCard = styled.div`
 
       .list-icon {
         font-size: 1.25rem;
-        /* margin: 0 20px 0 15px; */
         display: flex;
         align-items: center;
         color: #48e5c2;
-
-        &.hidden {
-          display: none;
-        }
       }
 
       .list-icon.minus {
@@ -229,7 +224,7 @@ export const SidebarCard = styled.div`
 
     li.delete-active {
       background-color: #df3153;
-      transition: all 0.2s ease-in-out;
+      transition: backround-color 0.2s ease-in-out;
       color: #fcfaf9;
     }
 

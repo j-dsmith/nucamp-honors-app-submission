@@ -10,13 +10,19 @@ import {
   TrayHeading,
   NewItemInput,
 } from "../Sidebar.styles";
+import { addProject, deleteProject } from "../../../redux/ActionCreators";
 import NewProjectBtn from "../Buttons/NewProjectBtn";
-import DeleteProjectBtn from "../Buttons/DeleteProjectBtn";
+import DeleteBtn from "../Buttons/DeleteBtn";
 
 const mapStateToProps = (state) => ({
   projects: state.projects,
   deleted: state.projects.deleted,
 });
+
+const mapDispatchToProps = {
+  addProject: (project) => addProject(project),
+  deleteProject: (id) => deleteProject(id),
+};
 
 const ProjectsTray = ({
   projects,
@@ -43,7 +49,7 @@ const ProjectsTray = ({
             addProject={addProject}
             deleteActive={deleted.deleteActive}
           />
-          <DeleteProjectBtn />
+          <DeleteBtn />
         </TrayHeading>
         <SidebarCard className="projects-tray fade">
           <ul>
@@ -93,4 +99,4 @@ const ProjectsTray = ({
   );
 };
 
-export default connect(mapStateToProps)(ProjectsTray);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectsTray);

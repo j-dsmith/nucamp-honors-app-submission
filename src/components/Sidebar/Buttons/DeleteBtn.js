@@ -9,16 +9,14 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  toggleDelete: (itemType) => toggleDelete(itemType),
+  toggleDelete: () => toggleDelete(),
 };
 
 const DeleteProjectBtn = ({ toggleDelete, deleted }) => {
-  const { deleteProjectActive, deleteNoteActive } = deleted;
-
   return (
     <NewBtn
-      onClick={() => toggleDelete(deleteProjectActive ? "project" : "note")}
-      deleteActive={deleteNoteActive || deleteProjectActive ? true : false}
+      onClick={() => toggleDelete()}
+      deletedActive={deleted.deleteActive ? true : false}
     >
       <BsIcons.BsTrash className="delete-item" />
     </NewBtn>

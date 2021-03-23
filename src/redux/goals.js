@@ -1,9 +1,13 @@
 import * as ActionTypes from "./ActionTypes";
 
-export const GoalsReducer = (state = [], action) => {
+const dailyGoal = {
+  dailyGoal: "",
+};
+
+export const GoalsReducer = (state = dailyGoal, action) => {
   switch (action.type) {
     case ActionTypes.ADD_GOAL:
-      return [...state, action.payload];
+      return { ...state, dailyGoal: action.payload };
 
     default:
       return state;
