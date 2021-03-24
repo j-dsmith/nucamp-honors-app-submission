@@ -126,6 +126,7 @@ class Sidebar extends Component {
                   </SidebarItem>
                 );
               }
+              return <div />;
             })}
           </SidebarSection>
           <SidebarSection id="sidebar-tools"></SidebarSection>

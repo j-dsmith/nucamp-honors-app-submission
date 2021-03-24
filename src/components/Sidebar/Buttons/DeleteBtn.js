@@ -12,7 +12,7 @@ const mapDispatchToProps = {
   toggleDelete: () => toggleDelete(),
 };
 
-const DeleteProjectBtn = ({ toggleDelete, deleted }) => {
+const DeleteBtn = ({ toggleDelete, deleted }) => {
   return (
     <NewBtn
       onClick={() => toggleDelete()}
@@ -23,4 +23,4 @@ const DeleteProjectBtn = ({ toggleDelete, deleted }) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeleteProjectBtn);
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteBtn);

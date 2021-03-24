@@ -21,7 +21,7 @@ const Toolbar = () => {
       <button className="ql-list" value="bullet"></button>
       <button className="ql-indent" value="-1"></button>
       <button className="ql-indent" value="+1"></button>
-      <button className="ql-save">
+      <button className="ql-save" id="ql-save">
         <EditorButton id="save-note">Save</EditorButton>
       </button>
       {/* <button className="ql-update">

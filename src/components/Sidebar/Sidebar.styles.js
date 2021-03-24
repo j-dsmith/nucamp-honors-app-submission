@@ -296,7 +296,7 @@ export const NewItemInput = styled.input`
   padding: 10px;
   background: #333;
   height: 30px;
-  width: 80%;
+  width: 70%;
   color: #fcfaf9;
 
   &:focus {

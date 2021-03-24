@@ -55,6 +55,7 @@ export const GoalCheckbox = styled.label`
 
   .checked {
     color: #707070;
+    text-decoration: line-through;
   }
 
   .checkbox-input {

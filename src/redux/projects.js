@@ -6,18 +6,48 @@ const INITIAL_STATE = {
       projectId: 1,
       title: "First Project",
       notes: [
-        { noteId: 1, title: "Todo 1", text: "Learn React" },
-        { noteId: 2, title: "Todo 2", text: "Learn Redux" },
-        { noteId: 3, title: "Then What?", text: "Build something fun!" },
+        {
+          noteId: 1,
+          title: "Todo 1",
+          text: "Learn React",
+          dateCreated: new Date(2019, 9, 5).toLocaleDateString(),
+        },
+        {
+          noteId: 2,
+          title: "Todo 2",
+          text: "Learn Redux",
+          dateCreated: new Date(2021, 2, 2).toLocaleDateString(),
+        },
+        {
+          noteId: 3,
+          title: "Then What?",
+          text: "Build something fun!",
+          dateCreated: new Date(2020, 6, 8).toLocaleDateString(),
+        },
       ],
     },
     {
       projectId: 2,
       title: "Project 2",
       notes: [
-        { noteId: 1, title: "Redux is Hard", text: "Thats all" },
-        { noteId: 2, title: "Bucket List Goals", text: "Learn Redux" },
-        { noteId: 3, title: "Reality?", text: "Hold keyboard and cry..." },
+        {
+          noteId: 1,
+          title: "Redux is Hard",
+          text: "Thats all",
+          dateCreated: new Date(2018, 11, 24).toLocaleDateString(),
+        },
+        {
+          noteId: 2,
+          title: "Bucket List Goals",
+          text: "Learn Redux",
+          dateCreated: new Date(2020, 1, 4).toLocaleDateString(),
+        },
+        {
+          noteId: 3,
+          title: "Reality?",
+          text: "Hold keyboard and cry...",
+          dateCreated: new Date(2021, 2, 28).toLocaleDateString(),
+        },
       ],
     },
   ],
@@ -53,12 +83,18 @@ export const ProjectsReducer = (state = INITIAL_STATE, action) => {
       };
 
     case ActionTypes.DELETE_PROJECT:
-      const deletedProject = state.projects.filter(
+      //action payload contains note id to be deleted, find matching project in state
+      const deletedProject = state.projects.find(
         (project) => project.projectId === action.payload
       );
+      //"delete" project matching action.payload by filtering new array from all unmatching project ids - effectively leaves out or deletes the project matching payload
       const updatedProjects = state.projects.filter(
         (project) => project.projectId !== action.payload
       );
+
+      //pull notes out of deleted project and add to deleted notes array
+      //this step saves nested mapping issue in component
+      const deletedProjectNotes = deletedProject.notes.map((note) => note);
 
       return {
         ...state,
@@ -66,7 +102,9 @@ export const ProjectsReducer = (state = INITIAL_STATE, action) => {
         deleted: {
           ...state.deleted,
           deleteActive: true,
-          deletedNotes: state.deleted.deletedNotes.concat(deletedProject),
+          deletedNotes: state.deleted.deletedNotes.concat(
+            ...deletedProjectNotes
+          ),
         },
       };
 

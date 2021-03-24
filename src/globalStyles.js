@@ -49,16 +49,36 @@ a:hover
 .ql-snow.ql-toolbar button:focus,
 .ql-snow .ql-toolbar button:focus,
 .ql-snow.ql-toolbar button.ql-active,
-.ql-snow .ql-toolbar button.ql-active,
+.ql-snow .ql-toolbar button.ql-active
+{
+  color: #48e5c2;
+  background-color: #333;
+  border-radius: 12px;
+
+}
+
 .ql-snow.ql-toolbar .ql-picker-label:hover,
 .ql-snow .ql-toolbar .ql-picker-label:hover,
 .ql-snow.ql-toolbar .ql-picker-label.ql-active,
-.ql-snow .ql-toolbar .ql-picker-label.ql-active,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active
+ {
+  color: #48e5c2;
+  background-color: #333;
+  border-radius: 12px;
+}
+
+
+
 .ql-snow.ql-toolbar .ql-picker-item:hover,
 .ql-snow .ql-toolbar .ql-picker-item:hover,
 .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
-.ql-snow .ql-toolbar .ql-picker-item.ql-selected {
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected 
+{
   color: #48e5c2;
+  background-color: #333;
+  border-radius: 12px;
+  padding: 5px 10px;
+
 }
 
 .ql-snow.ql-toolbar button:hover .ql-fill,
@@ -90,6 +110,8 @@ a:hover
 .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill,
 .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
   fill: #48e5c2;
+  background-color: #333;
+  border-radius: 12px;
 }
 
 .ql-snow.ql-toolbar button:hover .ql-stroke,
@@ -120,20 +142,25 @@ a:hover
 .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
 .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
   stroke: #48e5c2;
+  background-color: #333;
+  border-radius: 12px;
 }
 
 .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke {
-  stroke: #333;
+  stroke: #48e5c2;
 }
 
 .ql-snow a {
   color: #48e5c2;
 }
 
+
 .ql-picker-options {
   border-radius: 15px;
   background-color: #fcfaf9;
-  color: #333
+  color: #666;
+  padding: 10px;
+  width: 175px;
 }
 
 .ql-picker-label:focus {
@@ -141,15 +168,16 @@ a:hover
 
 }
 
-.ql-snow.ql-toolbar .ql-save {
+.ql-snow.ql-toolbar .ql-save#ql-save {
   float: right;
   margin-right: 35px;
+
+  &:hover {
+    background: none;
+  }
 }
 
-.ql-snow.ql-toolbar .ql-update {
-  float: right;
-  margin-right: 30px;
-}
+
 
 `;
 

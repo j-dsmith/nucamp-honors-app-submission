@@ -20,7 +20,7 @@ const NewNoteBtn = ({
       noteId: id,
       title: newNoteTitle,
       text: "",
-      date: date,
+      dateCreated: date,
     });
   };
 

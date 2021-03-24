@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Sidebar from "./Sidebar/Sidebar";
 import HomeInfo from "./Home/HomeInfo";
 import EditorContainer from "./Editor/EditorContainer";
+import Trash from "./Trash/Trash";
 
 const mapStateToProps = (state) => ({
   projects: state.projects,
@@ -29,6 +30,7 @@ class Main extends Component {
             path="/projects/:projectId/:noteId"
             render={() => <EditorContainer />}
           />
+          <Route path="/trash" exact component={Trash} />
         </Switch>
       </div>
     );
