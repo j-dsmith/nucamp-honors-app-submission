@@ -30,6 +30,10 @@ const mapDispatchToProps = {
   deleteNote: (projectId, noteId) => deleteNote(projectId, noteId),
 };
 
+export const removeHtmlTags = (str) => {
+  return str.replace(/<[^>]*>?/gm, "");
+};
+
 const NotesTray = ({
   projectSelectedId,
   trayActive,
@@ -48,9 +52,6 @@ const NotesTray = ({
 
   //helper regex function for removing html tags,
   //source: freecodecamp - Intermediate React and Firebase Tutorial - Build an Evernote Clone (https://www.youtube.com/watch?v=I250xdtUvy8&t=3763s)
-  const removeHtmlTags = (str) => {
-    return str.replace(/<[^>]*>?/gm, "");
-  };
 
   const currentProject = projects.projects.find(
     (project) => project.projectId === projectSelectedId
@@ -117,7 +118,7 @@ const NotesTray = ({
                         </div>
                         <div className="notes-list-content">
                           <h4 className="notes-list-title">{note.title}</h4>
-                          <p>
+                          <p className="note-text">
                             {removeHtmlTags(note.text.substring(0, 20)) + "..."}
                           </p>
                         </div>

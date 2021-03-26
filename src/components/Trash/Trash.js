@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Scrollbars } from "react-custom-scrollbars";
+import { removeHtmlTags } from "../Sidebar/SidebarTrays/NotesTray";
 import {
   TrashHeading,
   TrashContainer,
@@ -9,7 +10,6 @@ import {
   DeletedTitle,
   DeletedContent,
 } from "./Trash.styles";
-import * as BsIcons from "react-icons/bs";
 
 const mapStateToProps = (state) => ({
   deleted: state.projects.deleted,
@@ -21,27 +21,22 @@ const Trash = ({ deleted }) => {
 
   return (
     <>
-      <TrashHeading>
-        Trash{" "}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <BsIcons.BsTrash />
-        </div>
-      </TrashHeading>
+      <TrashHeading>Deleted Notes</TrashHeading>
       <TrashContainer>
         <Scrollbars>
           <FlexContainer>
             {deletedNotes.map((note, index) => (
               <DeletedContent key={index}>
-                <DeletedNote>{note.noteId}</DeletedNote>
-                <DeletedTitle className={note.title ? null : "untitled"}>
-                  {note.title ? note.title : "Untitled"}
-                </DeletedTitle>
-                <p className="date">Created: {note.dateCreated}</p>
+                <DeletedNote>
+                  <p>{removeHtmlTags(note.text)}</p>
+                </DeletedNote>
+                <div className="note-info-col">
+                  <DeletedTitle className={note.title ? null : "untitled"}>
+                    {note.title ? note.title : "Untitled"}
+                  </DeletedTitle>
+                  <h4 className="note-id">ID: {note.noteId}</h4>
+                  <p className="date">Created: {note.dateCreated}</p>
+                </div>
               </DeletedContent>
             ))}
           </FlexContainer>

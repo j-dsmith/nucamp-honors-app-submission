@@ -4,7 +4,6 @@ import { setContentSelected } from "../../../redux/ActionCreators";
 
 import ProjectsTray from "./ProjectsTray";
 import NotesTray from "./NotesTray";
-import DeletedTray from "./DeletedTray";
 
 //map state to props for projects
 const mapStateToProps = (state) => {
@@ -41,7 +40,7 @@ class SidebarTray extends Component {
   render() {
     //bring in trayVisible from store which holds active, showProjects, showNotes
     //bring in projects from store and addProject dispatch from store
-    const { trayActive, projectsActive, notesActive, trashActive } = this.props;
+    const { trayActive, projectsActive, notesActive } = this.props;
 
     const { projectSelectedId } = this.state;
 
@@ -68,15 +67,6 @@ class SidebarTray extends Component {
       );
     }
 
-    if (trashActive) {
-      return (
-        <DeletedTray
-          trashActive={trashActive}
-          handleProjectSelected={this.handleProjectSelected}
-          deletedTray
-        />
-      );
-    }
     //split off into separate notes tray component
   }
 }

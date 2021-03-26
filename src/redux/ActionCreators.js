@@ -44,3 +44,13 @@ export const addGoal = (goal) => ({
   type: ActionTypes.ADD_GOAL,
   payload: goal,
 });
+
+export const setAuthUser = (authorized) => ({
+  type: ActionTypes.AUTH_USER,
+  payload: authorized,
+});
+
+export const setCurrentUser = (user) => ({
+  type: ActionTypes.SET_USER,
+  payload: user,
+});

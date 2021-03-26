@@ -16,6 +16,8 @@ export const SelectedReducer = (state = contentSelected, action) => {
         projectSelectedId: action.payload.projectId,
         noteSelectedId: action.payload.noteId,
       };
+    case ActionTypes.DELETE_NOTE:
+      return { ...state, isNoteSelected: false };
 
     default:
       return state;

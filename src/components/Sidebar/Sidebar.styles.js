@@ -85,7 +85,7 @@ export const SidebarItem = styled(Link)`
 
 export const SidebarLabel = styled.div`
   color: rgba(252, 250, 249, 0.85);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -243,6 +243,10 @@ export const SidebarCard = styled.div`
     li:only-child {
       border-radius: 15px;
     }
+  }
+
+  .note-text {
+    font-size: 0.8rem;
   }
 `;
 

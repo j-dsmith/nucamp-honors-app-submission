@@ -3,7 +3,8 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 
 * {
-  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  /* font-family: 'Poppins', Arial, Helvetica, sans-serif; */
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -37,11 +38,8 @@ a:hover
   grid-gap: 10px
 }
 
-.column {
-  background-color: rgba(0,0,0,0.2);
-  grid-row-start: span 4;
 
-}
+
 
 //Styles overwrite for default ReactQuill Snow theme 
 .ql-snow.ql-toolbar button:hover,
@@ -177,6 +175,9 @@ a:hover
   }
 }
 
+div.ql-container.ql-snow {
+  font-size: 1rem;
+}
 
 
 `;

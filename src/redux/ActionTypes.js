@@ -12,3 +12,7 @@ export const SHOW_TRAY = "SHOW_TRAY";
 
 //add daily goal
 export const ADD_GOAL = "ADD_GOAL";
+
+//User
+export const AUTH_USER = "AUTH_USER";
+export const SET_USER = "SET_USER";

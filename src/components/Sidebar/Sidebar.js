@@ -9,10 +9,18 @@ import {
   SidebarIcon,
   SidebarItem,
 } from "./Sidebar.styles";
+import ProfileCard from "../Profile/ProfileCard";
 import SidebarTray from "./SidebarTrays/SidebarTray";
 import { SidebarData } from "./SidebarData";
+import { toggleDelete } from "../../redux/ActionCreators";
 
-const mapDispatchToProps = {};
+const mapStateToProps = (state) => ({
+  deleted: state.projects.deleted,
+});
+
+const mapDispatchToProps = {
+  toggleDelete: () => toggleDelete(),
+};
 
 class Sidebar extends Component {
   state = {
@@ -58,16 +66,13 @@ class Sidebar extends Component {
   };
 
   handleTrashClick = () => {
-    const { trayActive, trashActive } = this.state;
-    console.log("clicked trash");
-    if (!trayActive) {
-      this.setState({ trashActive: true });
+    const { trayActive } = this.state;
+    const { deleted, toggleDelete } = this.props;
+    if (deleted.deleteActive) {
+      toggleDelete();
     }
     if (trayActive) {
-      this.setState({ trayActive: false, trashActive: true });
-    }
-    if (trashActive) {
-      this.setState({ trashActive: false });
+      this.setState({ trayActive: false });
     }
   };
 
@@ -81,12 +86,14 @@ class Sidebar extends Component {
 
   render() {
     //destructure state variables
-    const { trayActive, projectsActive, notesActive, trashActive } = this.state;
+    const { trayActive, projectsActive, notesActive } = this.state;
 
     return (
       <SidebarContainer>
         <StyledSidebar>
-          <SidebarSection id="sidebar-profile"></SidebarSection>
+          <SidebarSection id="sidebar-profile">
+            <ProfileCard />
+          </SidebarSection>
           <SidebarSection id="sidebar-data">
             {/* Map over sidebar data to fill sidebar */}
             {SidebarData.map(({ title, path, icon }, index) => {
@@ -135,7 +142,6 @@ class Sidebar extends Component {
           trayActive={trayActive}
           projectsActive={projectsActive}
           notesActive={notesActive}
-          trashActive={trashActive}
           setNotesActive={this.setNotesActive}
         />
       </SidebarContainer>
@@ -143,4 +149,6 @@ class Sidebar extends Component {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(Sidebar));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Sidebar)
+);

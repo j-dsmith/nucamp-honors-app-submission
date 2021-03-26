@@ -86,7 +86,7 @@ const HomeInfo = ({ addGoal, dailyGoal }) => {
           </>
         ) : (
           <>
-            <GoalLabel htmlFor="focus">Daily Goal:</GoalLabel>
+            <GoalLabel htmlFor="focus">Today</GoalLabel>
             <GoalCheckbox className="checkbox">
               <span
                 className={`checkbox-input ${goalComplete ? "checked" : null}`}
@@ -110,7 +110,7 @@ const HomeInfo = ({ addGoal, dailyGoal }) => {
                     <path
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="3"
+                      strokeWidth="3"
                       d="M1.73 12.91l6.37 6.37L22.79 4.59"
                     />
                   </svg>

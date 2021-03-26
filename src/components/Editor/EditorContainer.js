@@ -19,7 +19,10 @@ const EditorContainer = ({ projects, contentSelected, deleted }) => {
   return (
     <GridContainer>
       {isNoteSelected && !deleted.deleteActive ? (
-        <Editor selectedNote={selectedNote} projectId={projectSelectedId} />
+        <Editor
+          selectedNote={!deleted.deleteActive ? selectedNote : null}
+          projectId={projectSelectedId}
+        />
       ) : null}
     </GridContainer>
   );

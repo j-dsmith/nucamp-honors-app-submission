@@ -30,10 +30,11 @@ export const StyledEditor = styled.div`
 `;
 
 export const NewNoteTitle = styled.input`
+  font-family: "Playfair Display", "Times New Roman", Times, serif;
   margin: 20px 0px 0px 8px;
   grid-column: 2 / span 5;
   grid-row: 1 / span 1;
-  font-size: 2rem;
+  font-size: 3rem;
   color: #333;
   border: none;
   font-weight: bold;

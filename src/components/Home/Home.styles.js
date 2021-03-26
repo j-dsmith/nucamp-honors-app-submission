@@ -15,7 +15,7 @@ export const StyledWidget = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 export const Clock = styled.div`
@@ -25,12 +25,14 @@ export const Clock = styled.div`
 `;
 
 export const Greeting = styled.p`
-  font-size: 3.5rem;
+  font-family: "Playfair Display", "Times New Roman", Times, serif;
+  font-size: 4.5rem;
+  font-weight: bold;
   color: #333;
 `;
 
 export const GoalLabel = styled.label`
-  font-size: 2rem;
+  font-size: 2.75rem;
 `;
 export const DailyGoal = styled.input`
   padding-bottom: 5px;
@@ -79,7 +81,7 @@ export const GoalCheckbox = styled.label`
     width: 1em;
     border-radius: 0.25em;
     border: 0.1em solid #333;
-    transform: translateY(0.35em);
+    transform: translateY(0.1em);
 
     svg {
       transition: transform 0.1s ease-in 25ms;

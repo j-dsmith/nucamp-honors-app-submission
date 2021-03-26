@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Scrollbars } from "react-custom-scrollbars";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { StyledEditor, NewNoteTitle } from "./Editor.styles";
@@ -8,7 +9,7 @@ import { addNote, updateNote } from "../../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
   contentSelected: state.contentSelected,
-  editing: state.editing,
+  deleted: state.projects.deleted,
 });
 
 const mapDispatchToProps = {
@@ -29,7 +30,6 @@ class Editor extends Component {
   //focus title input on page load
   componentDidMount() {
     this.titleInput.focus();
-
     this.setState({
       title: this.props.selectedNote.title,
       text: this.props.selectedNote.text,
@@ -39,13 +39,25 @@ class Editor extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.selectedNote.noteId !== this.state.noteId)
+    if (
+      this.props.selectedNote.noteId !== this.state.noteId &&
+      !this.props.deleted.deleteActive
+    )
       this.setState({
         title: this.props.selectedNote.title,
         text: this.props.selectedNote.text,
         noteId: this.props.selectedNote.noteId,
         projectId: this.props.projectId,
       });
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      title: "",
+      text: "",
+      noteId: null,
+      projectId: null,
+    });
   }
 
   handleChange = (value) => {
@@ -97,15 +109,17 @@ class Editor extends Component {
         />
 
         <StyledEditor className="text-editor">
-          <Toolbar />
-          <ReactQuill
-            theme="snow"
-            modules={this.modules}
-            formats={this.formats}
-            //if note is selected, editor shows selected notes text content, otherwise show the current note
-            value={this.state.text}
-            onChange={this.handleChange}
-          />
+          <Scrollbars>
+            <Toolbar />
+            <ReactQuill
+              theme="snow"
+              modules={this.modules}
+              formats={this.formats}
+              //if note is selected, editor shows selected notes text content, otherwise show the current note
+              value={this.state.text}
+              onChange={this.handleChange}
+            />
+          </Scrollbars>
         </StyledEditor>
       </>
     );
