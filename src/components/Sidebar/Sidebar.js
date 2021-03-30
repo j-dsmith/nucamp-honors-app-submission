@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import {
   SidebarContainer,
   SidebarSection,
@@ -8,11 +8,13 @@ import {
   SidebarLabel,
   SidebarIcon,
   SidebarItem,
+  LogoutBtn,
 } from "./Sidebar.styles";
 import ProfileCard from "../Profile/ProfileCard";
 import SidebarTray from "./SidebarTrays/SidebarTray";
 import { SidebarData } from "./SidebarData";
-import { toggleDelete } from "../../redux/ActionCreators";
+import { toggleDelete, logout } from "../../redux/ActionCreators";
+import * as VscIcons from "react-icons/vsc";
 
 const mapStateToProps = (state) => ({
   deleted: state.projects.deleted,
@@ -20,6 +22,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   toggleDelete: () => toggleDelete(),
+  logout,
 };
 
 class Sidebar extends Component {
@@ -27,6 +30,7 @@ class Sidebar extends Component {
     trayActive: false,
     projectsActive: true,
     notesActive: false,
+    loggedOut: false,
   };
 
   setNotesActive = () => {
@@ -84,9 +88,14 @@ class Sidebar extends Component {
     });
   };
 
+  handleLogout = () => {
+    this.setState({ loggedOut: true });
+    this.props.logout();
+  };
+
   render() {
     //destructure state variables
-    const { trayActive, projectsActive, notesActive } = this.state;
+    const { trayActive, projectsActive, notesActive, loggedOut } = this.state;
 
     return (
       <SidebarContainer>
@@ -97,7 +106,7 @@ class Sidebar extends Component {
           <SidebarSection id="sidebar-data">
             {/* Map over sidebar data to fill sidebar */}
             {SidebarData.map(({ title, path, icon }, index) => {
-              if (title === "Projects") {
+              if (title === "PROJECTS") {
                 return (
                   <SidebarItem
                     to={`${path}`}
@@ -109,7 +118,7 @@ class Sidebar extends Component {
                   </SidebarItem>
                 );
               }
-              if (title === "Trash") {
+              if (title === "TRASH") {
                 return (
                   <SidebarItem
                     to={`${path}`}
@@ -121,7 +130,7 @@ class Sidebar extends Component {
                   </SidebarItem>
                 );
               }
-              if (title === "Home") {
+              if (title === "HOME") {
                 return (
                   <SidebarItem
                     to={`${path}`}
@@ -136,19 +145,24 @@ class Sidebar extends Component {
               return <div />;
             })}
           </SidebarSection>
-          <SidebarSection id="sidebar-tools"></SidebarSection>
+          <SidebarSection id="sidebar-tools">
+            <LogoutBtn id="logout-btn" onClick={() => this.handleLogout()}>
+              Sign Out <VscIcons.VscSignOut id="logout-icon" />
+            </LogoutBtn>
+          </SidebarSection>
         </StyledSidebar>
+
         <SidebarTray
           trayActive={trayActive}
           projectsActive={projectsActive}
           notesActive={notesActive}
           setNotesActive={this.setNotesActive}
         />
+
+        {loggedOut ? <Redirect to="/" /> : null}
       </SidebarContainer>
     );
   }
 }
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Sidebar)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

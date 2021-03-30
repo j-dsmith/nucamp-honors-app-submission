@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setContentSelected } from "../../../redux/ActionCreators";
-
+import InfoToast from "../../Home/InfoToast";
 import ProjectsTray from "./ProjectsTray";
 import NotesTray from "./NotesTray";
 

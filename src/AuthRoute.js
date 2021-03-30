@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { Redirect, Route, useParams } from "react-router";
+import { Redirect, Route } from "react-router";
 
 const AuthRoute = (props) => {
   const { isAuthUser, type } = props;
-  console.log(isAuthUser);
-  const { id, projectId } = useParams();
-  console.log(id, projectId);
+
   if (type === "guest" && isAuthUser) return <Redirect to="/home" />;
   else if (type === "private" && !isAuthUser) return <Redirect to="/signup" />;
 

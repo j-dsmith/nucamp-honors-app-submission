@@ -180,6 +180,7 @@ div.ql-container.ql-snow {
 }
 
 
+
 `;
 
 export default GlobalStyle;

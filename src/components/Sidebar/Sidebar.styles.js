@@ -51,15 +51,11 @@ export const StyledTray = styled.div`
     padding-left: 10px;
     color: #fcfaf9;
     display: inline-block;
+    text-shadow: 1px 1px 4px #292929;
   }
 
   &.tray-active {
     transform: translateX(75%);
-  }
-
-  &.trash-active {
-    transform: translateX(75%);
-    background-color: #81204b;
   }
 `;
 
@@ -112,6 +108,7 @@ export const SidebarCard = styled.div`
   background-color: #333;
   margin: 10px;
   border-radius: 15px;
+  box-shadow: 0 10px 6px -6px #333;
 
   ul {
     list-style-type: none;
@@ -151,7 +148,7 @@ export const SidebarCard = styled.div`
       }
 
       .list-icon.minus {
-        color: #fcfaf9;
+        color: #df3153;
       }
 
       .project-list-item {
@@ -201,7 +198,7 @@ export const SidebarCard = styled.div`
       }
 
       #x-icon-right {
-        color: #fcfaf9;
+        color: #df3153;
         transition: all 0.4s ease;
         opacity: 0;
         margin-left: auto;
@@ -223,9 +220,13 @@ export const SidebarCard = styled.div`
     }
 
     li.delete-active {
-      background-color: #df3153;
+      background-color: #fcfaf9;
       transition: backround-color 0.2s ease-in-out;
-      color: #fcfaf9;
+      color: #292929;
+
+      p {
+        color: #292929;
+      }
     }
 
     li.active-note {
@@ -290,6 +291,35 @@ export const NewBtn = styled.div`
 
   &:hover {
     background-color: ${(props) => (props.deletedActive ? "none" : "#292929")};
+    box-shadow: 0 10px 6px -6px #333;
+  }
+`;
+
+export const LogoutBtn = styled.button`
+  margin: auto 15px 15px 15px;
+  height: 60px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  background: #48e5c2;
+  color: #292929;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease-in-out;
+  box-shadow: 0 10px 6px -6px #0a0a0a;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: #82edd6;
+  }
+
+  #logout-icon {
+    margin: 0 5px;
   }
 `;
 

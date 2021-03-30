@@ -9,24 +9,14 @@ export const Card = styled.div`
   justify-content: flex-start;
 `;
 
-export const AvatarContainer = styled.div`
-  margin: 10px;
-  background-color: #48e5c2;
-  border-radius: 50%;
-  height: 140px;
-  width: 140px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 export const Avatar = styled.div`
-  margin: 5px;
-  background-image: url("https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80");
+  margin: 10px;
+  background-image: url("");
   background-size: 80%;
   background-position: center;
   border-radius: 50%;
   border: 2px solid #48e5c2;
+  box-shadow: 0 10px 6px -6px #0a0a0a;
   height: 130px;
   width: 130px;
 `;
@@ -57,8 +47,6 @@ export const ItemGroup = styled.div`
 
 export const Label = styled.h4`
   font-size: 1rem;
-  font-weight: bold;
-  text-transform: uppercase;
   color: #d6d6d6;
 `;
 
@@ -67,13 +55,14 @@ export const NumLabel = styled.p`
   font-size: 2.5rem;
   font-weight: bold;
   color: #48e5c2;
+  text-shadow: 2px 1px 2px #0a0a0a;
 `;
 
 export const LoginContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: papayawhip;
+  background: #fcfaf9;
   padding: 80px;
   height: 100vh;
   width: 100vw;
@@ -110,13 +99,14 @@ export const StyledInput = styled.input`
   padding: 10px;
   border-radius: 15px;
   border: 1px solid #d6d6d6;
+  background-color: #fcfaf9;
 
   font-size: 1.25em;
   display: inline-block;
 
   &:focus {
     outline: none;
-    box-shadow: 0 10px 6px -6px #ccc;
+    box-shadow: 0 10px 6px -6px #858585;
   }
 `;
 
@@ -125,7 +115,7 @@ export const FormContainer = styled.div`
   height: 100%;
   width: 40%;
   border-radius: 30px;
-  background-color: #fafcf9;
+  background-color: #f9e8dd;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
     0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
@@ -185,7 +175,7 @@ export const StyledForm = styled.form`
     background: #333;
     color: #48e5c2;
     font-size: 1.5rem;
-    box-shadow: 0 10px 6px -6px #ccc;
+    box-shadow: 0 10px 6px -6px #858585;
     transition: background-color 0.2s ease-in-out;
 
     div {
@@ -222,7 +212,7 @@ export const StyledForm = styled.form`
     grid-column: 1 / span 4;
     grid-row: 7 / span 1;
     background: #48e5c2;
-    color: #333;
+    color: #292929;
     font-size: 1.25rem;
 
     &:focus {

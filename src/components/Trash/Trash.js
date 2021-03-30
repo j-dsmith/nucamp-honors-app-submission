@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Scrollbars } from "react-custom-scrollbars";
 import { removeHtmlTags } from "../Sidebar/SidebarTrays/NotesTray";
+import FadeInEditor from "../Editor/Editor.styles";
+import InfoToast from "../Home/InfoToast";
 import {
   TrashHeading,
   TrashContainer,
@@ -17,31 +19,38 @@ const mapStateToProps = (state) => ({
 
 const Trash = ({ deleted }) => {
   const { deletedNotes } = deleted;
-  //extract all notes from deleted projects
 
   return (
     <>
-      <TrashHeading>Deleted Notes</TrashHeading>
-      <TrashContainer>
-        <Scrollbars>
-          <FlexContainer>
-            {deletedNotes.map((note, index) => (
-              <DeletedContent key={index}>
-                <DeletedNote>
-                  <p>{removeHtmlTags(note.text)}</p>
-                </DeletedNote>
-                <div className="note-info-col">
-                  <DeletedTitle className={note.title ? null : "untitled"}>
-                    {note.title ? note.title : "Untitled"}
-                  </DeletedTitle>
-                  <h4 className="note-id">ID: {note.noteId}</h4>
-                  <p className="date">Created: {note.dateCreated}</p>
-                </div>
-              </DeletedContent>
-            ))}
-          </FlexContainer>
-        </Scrollbars>
-      </TrashContainer>
+      <InfoToast
+        heading="Trash"
+        content="Deleted notes are displayed here, restoral of deleted content is a feature to be implemented in the future. "
+        positionX={245}
+        positionY={100}
+      />
+      <FadeInEditor>
+        <TrashHeading>Deleted Notes</TrashHeading>
+        <TrashContainer>
+          <Scrollbars>
+            <FlexContainer>
+              {deletedNotes.map((note, index) => (
+                <DeletedContent key={index}>
+                  <DeletedNote>
+                    <p>{removeHtmlTags(note.text)}</p>
+                  </DeletedNote>
+                  <div className="note-info-col">
+                    <DeletedTitle className={note.title ? null : "untitled"}>
+                      {note.title ? note.title : "Untitled"}
+                    </DeletedTitle>
+                    <h4 className="note-id">ID: {note.noteId}</h4>
+                    <p className="date">Created: {note.dateCreated}</p>
+                  </div>
+                </DeletedContent>
+              ))}
+            </FlexContainer>
+          </Scrollbars>
+        </TrashContainer>
+      </FadeInEditor>
     </>
   );
 };

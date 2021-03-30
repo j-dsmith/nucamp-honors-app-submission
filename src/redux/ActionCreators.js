@@ -54,3 +54,11 @@ export const setCurrentUser = (user) => ({
   type: ActionTypes.SET_USER,
   payload: user,
 });
+
+export const logout = () => ({
+  type: ActionTypes.LOGOUT,
+});
+
+export const toggleTips = () => ({
+  type: ActionTypes.TOGGLE_TIPS,
+});

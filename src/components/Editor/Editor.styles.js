@@ -1,4 +1,49 @@
-import styled from "styled-components";
+import React from "react";
+import styled, { keyframes } from "styled-components";
+
+//Editor fade styles - Fade in component source https://www.joshwcomeau.com/snippets/react-components/fade-in/
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const FadeInEditor = ({
+  duration = 300,
+  delay = 0,
+  children,
+  ...delegated
+}) => {
+  return (
+    <Wrapper
+      {...delegated}
+      style={{
+        ...(delegated.style || {}),
+        animationDuration: duration + "ms",
+        animationDelay: delay + "ms",
+      }}
+    >
+      {children}
+    </Wrapper>
+  );
+};
+const Wrapper = styled.div`
+  @media (prefers-reduced-motion: no-preference) {
+    animation-name: ${fadeIn};
+    animation-fill-mode: backwards;
+  }
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-column: 1 / 9;
+  grid-row: 1 / 9;
+`;
+export default FadeInEditor;
+
+//Editor Styles
 
 export const GridContainer = styled.div`
   display: grid;

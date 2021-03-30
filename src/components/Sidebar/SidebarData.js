@@ -3,17 +3,17 @@ import * as BsIcons from "react-icons/bs";
 
 export const SidebarData = [
   {
-    title: "Home",
+    title: "HOME",
     path: "/home",
     icon: <BsIcons.BsHouse />,
   },
   {
-    title: "Projects",
+    title: "PROJECTS",
     path: "/projects",
     icon: <BsIcons.BsFolder />,
   },
   {
-    title: "Trash",
+    title: "TRASH",
     path: "/trash",
     icon: <BsIcons.BsTrash />,
   },

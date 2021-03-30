@@ -16,3 +16,9 @@ export const ADD_GOAL = "ADD_GOAL";
 //User
 export const AUTH_USER = "AUTH_USER";
 export const SET_USER = "SET_USER";
+
+//Logout and Reset State
+export const LOGOUT = "LOGOUT";
+
+//First visit for determining toast notifications
+export const TOGGLE_TIPS = "TOGGLE_TIPS";

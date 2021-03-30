@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addGoal } from "../../redux/ActionCreators";
-import {
+import FadeInHome, {
   StyledWidget,
   HomeContainer,
   Clock,
@@ -10,16 +10,19 @@ import {
   DailyGoal,
   GoalCheckbox,
 } from "./Home.styles";
+import InfoToast from "./InfoToast";
+import { createClock, getTimeOfDay } from "../../helpers";
 
 const mapStateToProps = (state) => ({
   dailyGoal: state.dailyGoal,
+  user: state.user,
 });
 
 const mapDispatchToProps = {
   addGoal: (goal) => addGoal(goal),
 };
 
-const HomeInfo = ({ addGoal, dailyGoal }) => {
+const HomeInfo = ({ addGoal, dailyGoal, user }) => {
   const [time, setTime] = useState(
     new Date().toLocaleTimeString("en-US", {
       hour: "numeric",
@@ -28,101 +31,90 @@ const HomeInfo = ({ addGoal, dailyGoal }) => {
   );
   const [goal, setGoal] = useState("");
   const [goalComplete, setGoalComplete] = useState(false);
+  const [goalSubmitted, setGoalSubmitted] = useState(false);
 
-  //create clock
-  setInterval(() => {
-    const currentTime = new Date().toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-    });
-    setTime(currentTime);
-  }, 1000);
+  // create clock
+  createClock(setTime);
 
   //set greeting based on time of day
-  let timeOfDay = "";
-  const getTimeOfDay = () => {
-    const time = new Date().getHours();
-
-    if (time > 0 && time < 12) {
-      timeOfDay = "Morning";
-    } else if (time >= 12 && time <= 18) {
-      timeOfDay = "Afternoon";
-    } else {
-      timeOfDay = "Evening";
-    }
-    return timeOfDay;
-  };
-
-  getTimeOfDay();
+  const timeOfDay = getTimeOfDay();
 
   //handle enter key event
   const handleEnter = (e) => {
     if (e.key === "Enter") {
       addGoal(goal);
       setGoal("");
-
-      console.log("submitted goal");
+      setGoalSubmitted(true);
     }
   };
 
   return (
     <HomeContainer>
-      <StyledWidget>
-        <Clock>{time}</Clock>
-        <Greeting>{`Good ${timeOfDay}, Jamey`}</Greeting>
+      <InfoToast
+        heading="Welcome to the Home screen!"
+        content="Here you can add a daily goal to keep you motivated while working on projects."
+      />
 
-        {!dailyGoal.dailyGoal ? (
-          <>
-            <GoalLabel htmlFor="focus">
-              What is your goal for the day?
-            </GoalLabel>
-            <DailyGoal
-              id="focus"
-              type="text"
-              value={goal}
-              onChange={(e) => setGoal(e.target.value)}
-              onKeyUp={(e) => handleEnter(e)}
-            />
-          </>
-        ) : (
-          <>
-            <GoalLabel htmlFor="focus">Today</GoalLabel>
-            <GoalCheckbox className="checkbox">
-              <span
-                className={`checkbox-input ${goalComplete ? "checked" : null}`}
-              >
-                <input
-                  type="checkbox"
-                  name="checkbox"
-                  onClick={() => setGoalComplete(!goalComplete)}
-                />
+      <FadeInHome>
+        <StyledWidget>
+          <Clock>{time}</Clock>
+          <Greeting>{`Good ${timeOfDay}, ${user.name}`}</Greeting>
+
+          {!dailyGoal.dailyGoal ? (
+            <>
+              <GoalLabel htmlFor="focus">
+                What is your goal for the day?
+              </GoalLabel>
+              <DailyGoal
+                id="focus"
+                type="text"
+                value={goal}
+                onChange={(e) => setGoal(e.target.value)}
+                onKeyUp={(e) => handleEnter(e)}
+              />
+            </>
+          ) : (
+            <>
+              <GoalLabel htmlFor="focus">TODAY</GoalLabel>
+              <GoalCheckbox className="checkbox">
                 <span
-                  className={`checkbox-control ${
+                  className={`checkbox-input ${
                     goalComplete ? "checked" : null
                   }`}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    focusable="false"
+                  <input
+                    type="checkbox"
+                    name="checkbox"
+                    onClick={() => setGoalComplete(!goalComplete)}
+                  />
+                  <span
+                    className={`checkbox-control ${
+                      goalComplete ? "checked" : null
+                    }`}
                   >
-                    <path
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      d="M1.73 12.91l6.37 6.37L22.79 4.59"
-                    />
-                  </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        d="M1.73 12.91l6.37 6.37L22.79 4.59"
+                      />
+                    </svg>
+                  </span>
                 </span>
-              </span>
-              <span className={`label ${goalComplete ? "checked" : null}`}>
-                {dailyGoal.dailyGoal}
-              </span>
-            </GoalCheckbox>
-          </>
-        )}
-      </StyledWidget>
+                <span className={`label ${goalComplete ? "checked" : null}`}>
+                  {dailyGoal.dailyGoal}
+                </span>
+              </GoalCheckbox>
+            </>
+          )}
+        </StyledWidget>
+      </FadeInHome>
     </HomeContainer>
   );
 };

@@ -60,7 +60,9 @@ const NotesTray = ({
   return (
     <StyledTray className={trayActive ? "tray-active" : null} projectsTray>
       <Scrollbars>
-        <h2>{currentProject.title}</h2>
+        <h2 style={{ textShadow: "1px 1px 4px #292929" }}>
+          {currentProject.title ? currentProject.title : "Untitled Project"}
+        </h2>
         <TrayHeading>
           <NewItemInput
             placeholder="New Note"
@@ -90,7 +92,7 @@ const NotesTray = ({
                       </div>
                       <div className="notes-list-content">
                         <h4 className="notes-list-title">{note.title}</h4>
-                        <p>
+                        <p className="note-text">
                           {removeHtmlTags(note.text.substring(0, 20)) + "..."}
                         </p>
                       </div>
@@ -102,7 +104,7 @@ const NotesTray = ({
                           deleteNote(projectSelectedId, note.noteId)
                         }
                       >
-                        <BsIcons.BsX />
+                        <BsIcons.BsXCircleFill />
                       </div>
                     </div>
                   ) : (

@@ -14,7 +14,6 @@ export const TrashHeading = styled.h2`
 `;
 
 export const TrashContainer = styled.div`
-  padding: 10px;
   background: #f9e8dd;
   border-radius: 15px;
   grid-column: 3 / 8;
@@ -26,9 +25,10 @@ export const TrashContainer = styled.div`
 `;
 
 export const FlexContainer = styled.div`
+  padding: 15px;
+  padding-left: 40px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
   flex-wrap: wrap;
 `;
 
@@ -46,7 +46,7 @@ export const DeletedNote = styled.div`
   justify-content: flex-start;
 
   p {
-    height: 99%;
+    height: 98%;
     overflow-y: hidden;
   }
 `;
@@ -61,8 +61,8 @@ export const DeletedTitle = styled.h4`
 `;
 
 export const DeletedContent = styled.div`
-  margin: 10px 20px;
   padding: 10px 20px;
+  margin: 20px 25px;
   width: 20%;
   color: #a5234a;
   display: flex;

@@ -33,6 +33,7 @@ const ProjectsTray = ({
   deleteProject,
 }) => {
   const [newProjectTitle, setNewProjectTitle] = useState("");
+  const [toastCount, setToastCount] = useState(0);
 
   return (
     <StyledTray className={trayActive ? "tray-active" : null} projectsTray>
@@ -70,7 +71,7 @@ const ProjectsTray = ({
                         id="x-icon-right"
                         onClick={() => deleteProject(project.projectId)}
                       >
-                        <BsIcons.BsX />
+                        <BsIcons.BsXCircleFill />
                       </div>
                     </div>
                   ) : (

@@ -4,16 +4,24 @@ import { ProjectsReducer } from "./projects";
 import { SelectedReducer } from "./selected";
 import { GoalsReducer } from "./goals";
 import { UserReducer } from "./userReducer";
+import * as ActionTypes from "./ActionTypes";
+
+const appReducer = combineReducers({
+  projects: ProjectsReducer,
+  contentSelected: SelectedReducer,
+  dailyGoal: GoalsReducer,
+  user: UserReducer,
+});
+
+const rootReducer = (state, action) => {
+  if (action.type === ActionTypes.LOGOUT) {
+    state = undefined;
+  }
+
+  return appReducer(state, action);
+};
 
 export const ConfigureStore = () => {
-  const store = createStore(
-    combineReducers({
-      projects: ProjectsReducer,
-      contentSelected: SelectedReducer,
-      dailyGoal: GoalsReducer,
-      user: UserReducer,
-    }),
-    applyMiddleware(logger)
-  );
+  const store = createStore(rootReducer, applyMiddleware(logger));
   return store;
 };

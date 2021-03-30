@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { GridContainer } from "./Editor.styles";
+import FadeInEditor, { GridContainer } from "./Editor.styles";
 import Editor from "./Editor";
 
 const mapStateToProps = (state) => ({
@@ -17,14 +17,16 @@ const EditorContainer = ({ projects, contentSelected, deleted }) => {
     .notes.find((note) => note.noteId === noteSelectedId);
 
   return (
-    <GridContainer>
-      {isNoteSelected && !deleted.deleteActive ? (
-        <Editor
-          selectedNote={!deleted.deleteActive ? selectedNote : null}
-          projectId={projectSelectedId}
-        />
-      ) : null}
-    </GridContainer>
+    <FadeInEditor>
+      <GridContainer>
+        {isNoteSelected && !deleted.deleteActive ? (
+          <Editor
+            selectedNote={!deleted.deleteActive ? selectedNote : null}
+            projectId={projectSelectedId}
+          />
+        ) : null}
+      </GridContainer>
+    </FadeInEditor>
   );
 };
 

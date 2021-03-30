@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Formik } from "formik";
-import { Link, Redirect, withRouter } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { StyledInput, StyledForm, FormContainer } from "./Profile.styles";
+import { GoalCheckbox } from "../Home/Home.styles";
 import { setCurrentUser } from "../../redux/ActionCreators";
 import * as AiIcons from "react-icons/ai";
 import * as FaIcons from "react-icons/fa";
@@ -15,7 +16,7 @@ const mapStateToProps = (state) => ({
   isAuthUser: state.user.isAuthUser,
 });
 
-let SignUpForm = ({ setCurrentUser, isAuthUser }) => {
+let SignUpForm = ({ setCurrentUser }) => {
   const [toHome, setToHome] = useState(false);
 
   return (
@@ -61,7 +62,6 @@ let SignUpForm = ({ setCurrentUser, isAuthUser }) => {
               name: name,
               email: email,
               password: password,
-              isAuthUser: true,
             });
             setToHome(true);
             setSubmitting(false);
@@ -153,9 +153,12 @@ let SignUpForm = ({ setCurrentUser, isAuthUser }) => {
             >
               Create an Account
             </button>
-            <div id="existing-user">
+            <div
+              id="existing-user"
+              onClick={() => alert("Permanent profiles coming soon!")}
+            >
               Already have an account?{" "}
-              <Link to="/login" id="sign-in">
+              <Link to="/signup" id="sign-in">
                 Sign In
               </Link>
             </div>

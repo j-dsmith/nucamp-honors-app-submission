@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Sidebar from "./Sidebar/Sidebar";
 import HomeInfo from "./Home/HomeInfo";
 import EditorContainer from "./Editor/EditorContainer";
 import Trash from "./Trash/Trash";
 import SignUpPage from "./Profile/SignUpPage";
 import AuthRoute from "../AuthRoute";
+import InfoToast from "./Home/InfoToast";
+import ProjectPageContainer from "./ProjectPage/ProjectPageContainer";
 
 const mapStateToProps = (state) => ({
   projects: state.projects,
@@ -24,8 +26,24 @@ class Main extends Component {
         {isAuthUser ? <Sidebar /> : null}
         <Switch>
           <AuthRoute path="/home" render={() => <HomeInfo />} type="private" />
-          <AuthRoute exact path="/projects" type="private" />
-          <AuthRoute exact path="/projects/:projectId" type="private" />
+          <AuthRoute
+            exact
+            path="/projects"
+            type="private"
+            render={() => <ProjectPageContainer />}
+          />
+          <AuthRoute
+            exact
+            path="/projects/:projectId"
+            type="private"
+            render={() => (
+              <InfoToast
+                heading="This is the Notes tray."
+                content="From this tray you can view and delete existing notes, or add new notes to your project. Try clicking a note to bring up the Editor."
+                positionX={515}
+              />
+            )}
+          />
           <AuthRoute
             exact
             path="/projects/:projectId/:noteId"
