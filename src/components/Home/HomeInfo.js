@@ -10,7 +10,7 @@ import FadeInHome, {
   DailyGoal,
   GoalCheckbox,
 } from "./Home.styles";
-import InfoToast from "./InfoToast";
+import InfoToast from "../Toast/InfoToast";
 import { createClock, getTimeOfDay } from "../../helpers";
 
 const mapStateToProps = (state) => ({

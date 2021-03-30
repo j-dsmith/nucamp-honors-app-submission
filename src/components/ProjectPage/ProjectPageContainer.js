@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { PageContainer } from "./ProjectPage.styles";
-import InfoToast from "../Home/InfoToast";
+import InfoToast from "../Toast/InfoToast";
 
 const mapStateToProps = (state) => ({
   deleted: state.projects.deleted,

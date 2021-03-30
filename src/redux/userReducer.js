@@ -7,6 +7,7 @@ const user = {
   isAuthUser: false,
   tipsOn: true,
 };
+
 export const UserReducer = (state = user, action) => {
   switch (action.type) {
     case ActionTypes.AUTH_USER:
@@ -14,18 +15,21 @@ export const UserReducer = (state = user, action) => {
 
     case ActionTypes.SET_USER:
       const { name, email, password } = action.payload;
+      console.log(user);
       return {
         ...state,
         name: name,
         email: email,
         password: password,
         isAuthUser: true,
+        tipsOn: true,
       };
 
     case ActionTypes.TOGGLE_TIPS:
+      console.log(state);
       return {
         ...state,
-        tipsOn: !state.user.tipsOn,
+        tipsOn: !state.tipsOn,
       };
 
     default:

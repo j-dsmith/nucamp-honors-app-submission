@@ -10,19 +10,22 @@ import {
   SidebarItem,
   LogoutBtn,
 } from "./Sidebar.styles";
+import { Slider } from "../Toast/Toast.styles";
 import ProfileCard from "../Profile/ProfileCard";
 import SidebarTray from "./SidebarTrays/SidebarTray";
 import { SidebarData } from "./SidebarData";
-import { toggleDelete, logout } from "../../redux/ActionCreators";
+import { toggleDelete, logout, toggleTips } from "../../redux/ActionCreators";
 import * as VscIcons from "react-icons/vsc";
 
 const mapStateToProps = (state) => ({
   deleted: state.projects.deleted,
+  tipsOn: state.user.tipsOn,
 });
 
 const mapDispatchToProps = {
   toggleDelete: () => toggleDelete(),
   logout,
+  toggleTips,
 };
 
 class Sidebar extends Component {
@@ -146,6 +149,23 @@ class Sidebar extends Component {
             })}
           </SidebarSection>
           <SidebarSection id="sidebar-tools">
+            {/* Toggle switch for help toasts */}
+            <label className="slider-label" htmlFor="switch">
+              Hints on?
+            </label>
+            <div>
+              <Slider id="switch">
+                <input
+                  type="checkbox"
+                  onChange={() => {
+                    this.props.toggleTips();
+                  }}
+                  checked={this.props.tipsOn}
+                />
+                <span class="slider round"></span>
+              </Slider>
+            </div>
+
             <LogoutBtn id="logout-btn" onClick={() => this.handleLogout()}>
               Sign Out <VscIcons.VscSignOut id="logout-icon" />
             </LogoutBtn>

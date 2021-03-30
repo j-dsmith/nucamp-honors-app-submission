@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Scrollbars } from "react-custom-scrollbars";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { connect } from "react-redux";
+import { addNote, updateNote } from "../../redux/ActionCreators";
+import { Scrollbars } from "react-custom-scrollbars";
 import { StyledEditor, NewNoteTitle } from "./Editor.styles";
 import Toolbar from "./Toolbar";
-import { addNote, updateNote } from "../../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
   contentSelected: state.contentSelected,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Toast } from "./Home.styles";
+import { Toast } from "./Toast.styles";
 import * as IoIcons from "react-icons/io5";
 import * as BsIcons from "react-icons/bs";
 
@@ -21,7 +21,7 @@ const InfoToast = ({ heading, content, tipsOn, positionX, positionY }) => {
     setToastCount(1);
   }
 
-  return (
+  return tipsOn ? (
     <Toast out={visible} positionX={positionX} positionY={positionY}>
       <div className="toast-header">
         <h4>{heading}</h4>
@@ -47,6 +47,8 @@ const InfoToast = ({ heading, content, tipsOn, positionX, positionY }) => {
         <p>{content}</p>
       </div>
     </Toast>
+  ) : (
+    <div />
   );
 };
 

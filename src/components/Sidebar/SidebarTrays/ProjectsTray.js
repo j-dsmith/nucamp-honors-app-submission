@@ -33,7 +33,6 @@ const ProjectsTray = ({
   deleteProject,
 }) => {
   const [newProjectTitle, setNewProjectTitle] = useState("");
-  const [toastCount, setToastCount] = useState(0);
 
   return (
     <StyledTray className={trayActive ? "tray-active" : null} projectsTray>

@@ -12,6 +12,13 @@ export const SidebarSection = styled.div`
   padding: 0;
   display: flex;
   flex-direction: column;
+
+  .slider-label {
+    color: #ccc;
+    position: absolute;
+    left: 170px;
+    top: 785px;
+  }
 `;
 
 export const StyledSidebar = styled.div`

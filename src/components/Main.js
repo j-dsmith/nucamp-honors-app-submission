@@ -7,7 +7,7 @@ import EditorContainer from "./Editor/EditorContainer";
 import Trash from "./Trash/Trash";
 import SignUpPage from "./Profile/SignUpPage";
 import AuthRoute from "../AuthRoute";
-import InfoToast from "./Home/InfoToast";
+import InfoToast from "./Toast/InfoToast";
 import ProjectPageContainer from "./ProjectPage/ProjectPageContainer";
 
 const mapStateToProps = (state) => ({
@@ -24,6 +24,7 @@ class Main extends Component {
       <div className={"grid-container"}>
         {/* create routes here, home - projects, notes (note id for custom param routes), trash */}
         {isAuthUser ? <Sidebar /> : null}
+
         <Switch>
           <AuthRoute path="/home" render={() => <HomeInfo />} type="private" />
           <AuthRoute

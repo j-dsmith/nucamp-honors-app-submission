@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Scrollbars } from "react-custom-scrollbars";
 import { removeHtmlTags } from "../Sidebar/SidebarTrays/NotesTray";
 import FadeInEditor from "../Editor/Editor.styles";
-import InfoToast from "../Home/InfoToast";
+import InfoToast from "../Toast/InfoToast";
 import {
   TrashHeading,
   TrashContainer,
