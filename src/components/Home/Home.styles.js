@@ -71,12 +71,12 @@ export const Clock = styled.div`
   font-size: 10rem;
   font-weight: 500;
   color: #141414;
-  text-shadow: 1px 1px 4px #c2c2c2;
+  text-shadow: 1px 1px 6px #c2c2c2;
 `;
 
 export const Greeting = styled.p`
   font-family: "Playfair Display", "Times New Roman", Times, serif;
-  text-shadow: 1px 1px 4px #ccc;
+  text-shadow: 1px 1px 6px #ccc;
   font-size: 4.5rem;
   font-weight: bold;
   color: #292929;
@@ -116,6 +116,7 @@ export const GoalCheckbox = styled.label`
   .checked {
     color: #1cc4a0;
     text-decoration: line-through;
+    font-style: italic;
   }
 
   .checkbox-input {
@@ -154,5 +155,49 @@ export const GoalCheckbox = styled.label`
 
   input:checked + .checkbox-control svg {
     transform: scale(1);
+  }
+`;
+
+export const InfoWidget = styled.div`
+  grid-column: 7 / span 2;
+  grid-row: 1 / span 1;
+  display: flex;
+  align-items: top;
+  justify-content: flex-end;
+
+  div {
+    padding: 5px;
+    margin: 15px;
+    color: #333;
+    border-radius: 15px;
+    height: 60px;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+  }
+  .info-widget-clock {
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-shadow: 1px 1px 6px #ccc;
+  }
+
+  .info-widget-goal {
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 1.125rem;
+
+    h4 {
+      text-shadow: 1px 1px 6px #ccc;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    p.checked {
+      color: #1cc4a0;
+      text-decoration: line-through;
+      font-style: italic;
+    }
   }
 `;

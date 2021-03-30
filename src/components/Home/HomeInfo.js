@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addGoal } from "../../redux/ActionCreators";
+import { addGoal, toggleGoalComplete } from "../../redux/ActionCreators";
 import FadeInHome, {
   StyledWidget,
   HomeContainer,
@@ -20,9 +20,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   addGoal: (goal) => addGoal(goal),
+  toggleGoalComplete,
 };
 
-const HomeInfo = ({ addGoal, dailyGoal, user }) => {
+const HomeInfo = ({ addGoal, toggleGoalComplete, dailyGoal, user }) => {
   const [time, setTime] = useState(
     new Date().toLocaleTimeString("en-US", {
       hour: "numeric",
@@ -30,7 +31,6 @@ const HomeInfo = ({ addGoal, dailyGoal, user }) => {
     })
   );
   const [goal, setGoal] = useState("");
-  const [goalComplete, setGoalComplete] = useState(false);
   const [goalSubmitted, setGoalSubmitted] = useState(false);
 
   // create clock
@@ -79,17 +79,17 @@ const HomeInfo = ({ addGoal, dailyGoal, user }) => {
               <GoalCheckbox className="checkbox">
                 <span
                   className={`checkbox-input ${
-                    goalComplete ? "checked" : null
+                    dailyGoal.goalComplete ? "checked" : null
                   }`}
                 >
                   <input
                     type="checkbox"
                     name="checkbox"
-                    onClick={() => setGoalComplete(!goalComplete)}
+                    onClick={() => toggleGoalComplete()}
                   />
                   <span
                     className={`checkbox-control ${
-                      goalComplete ? "checked" : null
+                      dailyGoal.goalComplete ? "checked" : null
                     }`}
                   >
                     <svg
@@ -107,7 +107,11 @@ const HomeInfo = ({ addGoal, dailyGoal, user }) => {
                     </svg>
                   </span>
                 </span>
-                <span className={`label ${goalComplete ? "checked" : null}`}>
+                <span
+                  className={`label ${
+                    dailyGoal.goalComplete ? "checked" : null
+                  }`}
+                >
                   {dailyGoal.dailyGoal}
                 </span>
               </GoalCheckbox>

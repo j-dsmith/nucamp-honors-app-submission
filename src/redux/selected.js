@@ -8,7 +8,7 @@ const contentSelected = {
 
 export const SelectedReducer = (state = contentSelected, action) => {
   switch (action.type) {
-    case ActionTypes.NOTE_SELECTED:
+    case ActionTypes.CONTENT_SELECTED:
       const noteSelected = action.payload.noteId ? true : false;
       return {
         ...state,

@@ -5,9 +5,10 @@ import InfoToast from "../Toast/InfoToast";
 
 const mapStateToProps = (state) => ({
   deleted: state.projects.deleted,
+  projectSelectedId: state.contentSelected.projectSelectedId,
 });
 
-const ProjectPageContainer = ({ deleted }) => {
+const ProjectPageContainer = ({ deleted, projectSelectedId }) => {
   return (
     <PageContainer>
       {!deleted.deleteActive ? (
@@ -21,7 +22,7 @@ const ProjectPageContainer = ({ deleted }) => {
       {deleted.deleteActive ? (
         <InfoToast
           heading="Delete Items"
-          content="Add and remove projects and notes. Removed content can be viewed by selecting TRASH from the sidebar."
+          content="Click the delete icon to remove projects or notes. Removed content can be viewed by selecting TRASH from the sidebar."
           positionX={515}
         />
       ) : null}

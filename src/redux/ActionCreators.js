@@ -33,7 +33,7 @@ export const toggleDelete = () => ({
 });
 
 export const setContentSelected = (projectId, noteId) => ({
-  type: ActionTypes.NOTE_SELECTED,
+  type: ActionTypes.CONTENT_SELECTED,
   payload: {
     projectId,
     noteId,
@@ -43,6 +43,10 @@ export const setContentSelected = (projectId, noteId) => ({
 export const addGoal = (goal) => ({
   type: ActionTypes.ADD_GOAL,
   payload: goal,
+});
+
+export const toggleGoalComplete = () => ({
+  type: ActionTypes.TOGGLE_GOAL_COMPLETE,
 });
 
 export const setAuthUser = (authorized) => ({

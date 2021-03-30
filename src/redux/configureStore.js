@@ -3,7 +3,7 @@ import logger from "redux-logger";
 import { ProjectsReducer } from "./projects";
 import { SelectedReducer } from "./selected";
 import { GoalsReducer } from "./goals";
-import { UserReducer } from "./userReducer";
+import { UserReducer } from "./user";
 import * as ActionTypes from "./ActionTypes";
 
 const appReducer = combineReducers({

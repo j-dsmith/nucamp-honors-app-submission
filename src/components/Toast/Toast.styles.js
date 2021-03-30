@@ -9,8 +9,8 @@ export const Toast = styled.div`
   left: ${(props) => `${props.positionX}px`};
   top: ${(props) => `${props.positionY}px`};
   z-index: 10;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   color: #fcfaf9;
   margin: 20px;
   visibility: ${(props) => (props.out ? "hidden" : "visible")};

@@ -35,7 +35,7 @@ a:hover
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
-  grid-gap: 10px
+  grid-column-gap: 10px
 }
 
 
