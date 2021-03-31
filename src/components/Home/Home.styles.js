@@ -45,7 +45,7 @@ export const HomeContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
-  grid-column: 2 / 9;
+  grid-column: 1 / 9;
   grid-row: 1 / 9;
 `;
 
@@ -95,7 +95,7 @@ export const DailyGoal = styled.input`
   border-bottom: 1px solid #141414;
   background: none;
   font-size: 2rem;
-  width: 60%;
+  width: 30%;
   text-align: center;
   opacity: 1;
   transition: 0.3s ease;
@@ -110,7 +110,7 @@ export const GoalCheckbox = styled.label`
   display: grid;
   grid-template-columns: min-content auto;
   grid-gap: 0.5em;
-  font-size: 2rem;
+  font-size: 3rem;
   color: #333;
 
   .checked {

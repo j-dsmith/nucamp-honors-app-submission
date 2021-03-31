@@ -31,7 +31,7 @@ const HomeInfo = ({ addGoal, toggleGoalComplete, dailyGoal, user }) => {
     })
   );
   const [goal, setGoal] = useState("");
-  const [goalSubmitted, setGoalSubmitted] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   // create clock
   createClock(setTime);
@@ -44,7 +44,7 @@ const HomeInfo = ({ addGoal, toggleGoalComplete, dailyGoal, user }) => {
     if (e.key === "Enter") {
       addGoal(goal);
       setGoal("");
-      setGoalSubmitted(true);
+      setVisible(true);
     }
   };
 
@@ -53,6 +53,7 @@ const HomeInfo = ({ addGoal, toggleGoalComplete, dailyGoal, user }) => {
       <InfoToast
         heading="Welcome to the Home screen!"
         content="Here you can add a daily goal to keep you motivated while working on projects."
+        positionX={245}
       />
 
       <FadeInHome>
@@ -62,7 +63,7 @@ const HomeInfo = ({ addGoal, toggleGoalComplete, dailyGoal, user }) => {
 
           {!dailyGoal.dailyGoal ? (
             <>
-              <GoalLabel htmlFor="focus">
+              <GoalLabel out={visible} htmlFor="focus">
                 What is your goal for the day?
               </GoalLabel>
               <DailyGoal

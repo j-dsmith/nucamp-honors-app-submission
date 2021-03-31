@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Scrollbars } from "react-custom-scrollbars";
-import { removeHtmlTags } from "../Sidebar/SidebarTrays/NotesTray";
+import { removeHtmlTags } from "../../helpers";
 import FadeInEditor from "../Editor/Editor.styles";
 import InfoToast from "../Toast/InfoToast";
 import {

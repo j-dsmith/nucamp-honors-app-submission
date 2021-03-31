@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Formik } from "formik";
 import { Link, Redirect } from "react-router-dom";
 import { StyledInput, StyledForm, FormContainer } from "./Profile.styles";
-import { GoalCheckbox } from "../Home/Home.styles";
 import { setCurrentUser } from "../../redux/ActionCreators";
 import * as AiIcons from "react-icons/ai";
 import * as FaIcons from "react-icons/fa";

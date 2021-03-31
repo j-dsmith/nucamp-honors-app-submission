@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setContentSelected } from "../../../redux/ActionCreators";
-import InfoToast from "../../Toast/InfoToast";
 import ProjectsTray from "./ProjectsTray";
 import NotesTray from "./NotesTray";
 
@@ -44,8 +43,6 @@ class SidebarTray extends Component {
 
     const { projectSelectedId } = this.state;
 
-    //! make separate component for each tray - projects, notes, trash
-
     if (projectsActive) {
       return (
         <ProjectsTray
@@ -64,8 +61,6 @@ class SidebarTray extends Component {
         />
       );
     }
-
-    //split off into separate notes tray component
   }
 }
 

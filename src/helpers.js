@@ -26,3 +26,9 @@ export const getTimeOfDay = () => {
   }
   return timeOfDay;
 };
+
+//helper regex function for removing html tags,
+//source: freecodecamp - Intermediate React and Firebase Tutorial - Build an Evernote Clone (https://www.youtube.com/watch?v=I250xdtUvy8&t=3763s)
+export const removeHtmlTags = (str) => {
+  return str.replace(/<[^>]*>?/gm, "");
+};

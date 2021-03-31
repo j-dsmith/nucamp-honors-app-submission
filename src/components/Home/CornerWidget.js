@@ -9,10 +9,14 @@ const mapStateToProps = (state) => ({
 
 const CornerWidget = ({ dailyGoal }) => {
   console.log(dailyGoal);
-  const [time, setTime] = useState("");
-  createClock(setTime);
+  const [time, setTime] = useState(
+    new Date().toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+    })
+  );
 
-  const date = new Date().toLocaleDateString();
+  createClock(setTime);
 
   return (
     <InfoWidget>

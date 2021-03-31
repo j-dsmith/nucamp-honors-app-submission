@@ -16,7 +16,7 @@ const mapStateToProps = (state) => ({
 });
 
 const ProfileCard = ({ projects, user }) => {
-  const { name, email } = user;
+  const { name } = user;
 
   const numProjects = projects.projects.length;
   const numNotes = { count: 0 };

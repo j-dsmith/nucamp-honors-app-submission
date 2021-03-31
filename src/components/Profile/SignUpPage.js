@@ -2,7 +2,7 @@ import React from "react";
 import { LoginContainer, SvgContainer } from "./Profile.styles";
 import SignUpForm from "./SignUpForm";
 
-const SignUpPage = (props) => {
+const SignUpPage = () => {
   return (
     <LoginContainer>
       <SignUpForm />

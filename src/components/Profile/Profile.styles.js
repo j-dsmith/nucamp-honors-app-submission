@@ -6,19 +6,19 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 `;
 
 export const Avatar = styled.div`
   margin: 10px;
-  background-image: url("");
+  background-image: url("https://images.unsplash.com/photo-1590907047706-ee9c08cf3189?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80");
   background-size: 80%;
   background-position: center;
   border-radius: 50%;
   border: 2px solid #48e5c2;
   box-shadow: 0 10px 6px -6px #0a0a0a;
-  height: 130px;
-  width: 130px;
+  height: 150px;
+  width: 150px;
 `;
 
 export const Username = styled.h2`
@@ -29,6 +29,7 @@ export const Username = styled.h2`
   font-size: 1.25rem;
   text-align: center;
   border-bottom: 1px solid #666;
+  margin: 20px 0;
 `;
 
 export const ContentInfo = styled.div`
@@ -76,21 +77,21 @@ export const SvgContainer = styled.div`
   align-items: center;
 
   svg.notes {
-    height: 750px;
-    width: 750px;
+    height: 45%;
+    width: 45%;
     z-index: 1;
     position: absolute;
-    top: 200px;
+    top: 30%;
   }
 
   svg.backdrop {
-    height: 700px;
-    width: 700px;
+    height: 55%;
+    width: 55%;
 
     z-index: 0;
     position: absolute;
-    right: 185px;
-    top: -15px;
+    right: 1%;
+    top: 4%;
   }
 `;
 
@@ -100,7 +101,6 @@ export const StyledInput = styled.input`
   border-radius: 15px;
   border: 1px solid #d6d6d6;
   background-color: #fcfaf9;
-
   font-size: 1.25em;
   display: inline-block;
 

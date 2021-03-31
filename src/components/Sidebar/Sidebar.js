@@ -150,10 +150,11 @@ class Sidebar extends Component {
           </SidebarSection>
           <SidebarSection id="sidebar-tools">
             {/* Toggle switch for help toasts */}
-            <label className="slider-label" htmlFor="switch">
-              Hints on?
-            </label>
-            <div>
+
+            <div className="hints-toggle">
+              <label className="slider-label" htmlFor="switch">
+                Hints on?
+              </label>
               <Slider id="switch">
                 <input
                   type="checkbox"

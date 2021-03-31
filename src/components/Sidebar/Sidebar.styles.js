@@ -12,12 +12,16 @@ export const SidebarSection = styled.div`
   padding: 0;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
 
   .slider-label {
     color: #ccc;
-    position: absolute;
-    left: 170px;
-    top: 785px;
+  }
+
+  .hints-toggle {
+    margin: auto 15px 15px 15px;
+    display: flex;
+    justify-content: flex-end;
   }
 `;
 
@@ -303,7 +307,7 @@ export const NewBtn = styled.div`
 `;
 
 export const LogoutBtn = styled.button`
-  margin: auto 15px 15px 15px;
+  margin: 35px 15px 15px 15px;
   height: 60px;
   border-radius: 15px;
   border: none;

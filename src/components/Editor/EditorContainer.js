@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import FadeInEditor, { GridContainer } from "./Editor.styles";
 import Editor from "./Editor";
+import InfoToast from "../Toast/InfoToast";
 
 const mapStateToProps = (state) => ({
   projects: state.projects,
@@ -19,6 +20,11 @@ const EditorContainer = ({ projects, contentSelected, deleted }) => {
   return (
     <FadeInEditor>
       <GridContainer>
+        <InfoToast
+          heading="Start a new note!"
+          content="The editor is your space to create your next masterpiece, or just organize your thoughts. The save button will ensure your content is stored safely."
+          positionX={515}
+        />
         {isNoteSelected && !deleted.deleteActive ? (
           <Editor
             selectedNote={!deleted.deleteActive ? selectedNote : null}

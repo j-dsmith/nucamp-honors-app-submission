@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as BsIcons from "react-icons/bs";
 import { Scrollbars } from "react-custom-scrollbars";
+import { removeHtmlTags } from "../../../helpers";
 import {
   SidebarCard,
   StyledTray,
@@ -31,10 +32,6 @@ const mapDispatchToProps = {
   deleteNote: (projectId, noteId) => deleteNote(projectId, noteId),
 };
 
-export const removeHtmlTags = (str) => {
-  return str.replace(/<[^>]*>?/gm, "");
-};
-
 const NotesTray = ({
   projectSelectedId,
   trayActive,
@@ -51,9 +48,6 @@ const NotesTray = ({
     setContentSelected(projectId, noteId);
   };
 
-  //helper regex function for removing html tags,
-  //source: freecodecamp - Intermediate React and Firebase Tutorial - Build an Evernote Clone (https://www.youtube.com/watch?v=I250xdtUvy8&t=3763s)
-
   const currentProject = projects.projects.find(
     (project) => project.projectId === projectSelectedId
   );
@@ -63,7 +57,7 @@ const NotesTray = ({
       {deleted.deleteActive ? (
         <InfoToast
           heading="Delete Items"
-          content="Click the delete icon remove projects or notes. Removed content can be viewed by selecting TRASH from the sidebar."
+          content="Click the delete icon to remove projects or notes. Removed content can be viewed by selecting TRASH from the sidebar."
           positionX={515}
         />
       ) : null}

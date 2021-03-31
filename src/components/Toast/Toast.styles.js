@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
 export const Toast = styled.div`
+  margin: 20px;
   background-color: #292929;
   border-radius: 15px;
   height: 150px;
@@ -12,7 +13,6 @@ export const Toast = styled.div`
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   color: #fcfaf9;
-  margin: 20px;
   visibility: ${(props) => (props.out ? "hidden" : "visible")};
   animation: ${(props) => (props.out ? fadeOutToast : fadeInToast)} 0.3s linear;
   transition: visibility 0.2s linear;
@@ -103,9 +103,8 @@ const fadeOutToast = keyframes`
 `;
 
 export const Slider = styled.label`
+  margin-top: 25px;
   position: absolute;
-  left: 175px;
-  top: 820px;
   display: inline-block;
   width: 55px;
   height: 30px;

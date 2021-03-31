@@ -14,7 +14,7 @@ const ProjectPageContainer = ({ deleted, projectSelectedId }) => {
       {!deleted.deleteActive ? (
         <InfoToast
           heading="This is the Projects tray."
-          content="Here you can access or delete your existing projects, or create new ones."
+          content="Here you can access or delete your existing projects, or create new ones. Click a project now to view its contents."
           positionX={515}
         />
       ) : null}
