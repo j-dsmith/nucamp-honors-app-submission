@@ -22,9 +22,7 @@ const ProfileCard = ({ projects, user }) => {
   const numNotes = { count: 0 };
   //get total number of notes from the projects in state
   projects.projects.map((project) => {
-    for (let note of project.notes) {
-      numNotes.count = numNotes.count + 1;
-    }
+    numNotes.count += project.notes.length;
     return numNotes;
   });
 
