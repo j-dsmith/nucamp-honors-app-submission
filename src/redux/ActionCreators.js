@@ -1,5 +1,6 @@
 import * as ActionTypes from "./ActionTypes";
 
+//Projects
 export const addProject = (project) => ({
   type: ActionTypes.ADD_PROJECT,
   payload: project,
@@ -10,6 +11,7 @@ export const deleteProject = (id) => ({
   payload: id,
 });
 
+//Notes
 export const addNote = (note) => ({
   type: ActionTypes.ADD_NOTE,
   payload: note,
@@ -28,8 +30,13 @@ export const deleteNote = (projectId, noteId) => ({
   },
 });
 
+//General Utilities
 export const toggleDelete = () => ({
   type: ActionTypes.TOGGLE_DELETE,
+});
+
+export const toggleTips = () => ({
+  type: ActionTypes.TOGGLE_TIPS,
 });
 
 export const setContentSelected = (projectId, noteId) => ({
@@ -40,6 +47,7 @@ export const setContentSelected = (projectId, noteId) => ({
   },
 });
 
+//Goals
 export const addGoal = (goal) => ({
   type: ActionTypes.ADD_GOAL,
   payload: goal,
@@ -49,6 +57,7 @@ export const toggleGoalComplete = () => ({
   type: ActionTypes.TOGGLE_GOAL_COMPLETE,
 });
 
+//User
 export const setAuthUser = (authorized) => ({
   type: ActionTypes.AUTH_USER,
   payload: authorized,
@@ -61,8 +70,4 @@ export const setCurrentUser = (user) => ({
 
 export const logout = () => ({
   type: ActionTypes.LOGOUT,
-});
-
-export const toggleTips = () => ({
-  type: ActionTypes.TOGGLE_TIPS,
 });

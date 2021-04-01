@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-//Editor fade styles - Fade in component source https://www.joshwcomeau.com/snippets/react-components/fade-in/
+//Editor fade component - Fade in component source https://www.joshwcomeau.com/snippets/react-components/fade-in/
 
 const fadeIn = keyframes`
   from {

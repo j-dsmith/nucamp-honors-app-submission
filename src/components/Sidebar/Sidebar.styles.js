@@ -13,11 +13,9 @@ export const SidebarSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-
   .slider-label {
     color: #ccc;
   }
-
   .hints-toggle {
     margin: auto 15px 15px 15px;
     display: flex;
@@ -38,7 +36,6 @@ export const StyledSidebar = styled.div`
     0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
     0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     0 100px 80px rgba(0, 0, 0, 0.12);
-
   #sidebar-data {
     border-top: 1px solid #3d3d3d;
     border-bottom: 1px solid #3d3d3d;
@@ -56,7 +53,6 @@ export const StyledTray = styled.div`
   height: 100%;
   transition: all 0.3s ease;
   padding: 15px 0 15px 25px;
-
   h2 {
     margin: 10px;
     padding-left: 10px;
@@ -64,7 +60,6 @@ export const StyledTray = styled.div`
     display: inline-block;
     text-shadow: 1px 1px 4px #292929;
   }
-
   &.tray-active {
     transform: translateX(75%);
   }
@@ -84,7 +79,6 @@ export const SidebarItem = styled(Link)`
   padding: 0px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-
   &:hover {
     background-color: #1f1f1f;
   }
@@ -99,7 +93,6 @@ export const SidebarLabel = styled.div`
   height: 100%;
   width: 60%;
   transition: color 0.2s ease;
-
   &:hover {
     color: rgba(252, 250, 249, 1);
   }
@@ -123,51 +116,41 @@ export const SidebarCard = styled.div`
 
   ul {
     list-style-type: none;
-
     li {
       padding: 10px;
       border-bottom: 1px solid #3d3d3d;
       color: #fcfaf9;
       cursor: pointer;
       transition: (background-color, color) 0.2s ease;
-
       &:hover {
         background-color: #292929;
-
         #arrow-right {
           opacity: 1;
           transform: translateX(0);
-
           //add translate for arrow to slide right as it becomes visible
         }
-
         #x-icon-right {
           opacity: 1;
         }
       }
-
       p {
         color: rgba(252, 250, 249, 0.85);
         font-size: 0.85rem;
       }
-
       .list-icon {
         font-size: 1.25rem;
         display: flex;
         align-items: center;
         color: #48e5c2;
       }
-
       .list-icon.minus {
         color: #df3153;
       }
-
       .project-list-item {
         display: flex;
         align-content: center;
         justify-content: space-between;
       }
-
       .project-list-title {
         font-size: 1rem;
         margin-left: 20px;
@@ -179,28 +162,22 @@ export const SidebarCard = styled.div`
         align-content: center;
         justify-content: flex-start;
       }
-
       .notes-list-title {
         font-size: 1rem;
       }
-
       .notes-list-content {
         margin-left: 20px;
       }
-
       .note-list-summary {
         font-size: 0.85rem;
         text-decoration: none;
       }
-
       .selected-note {
         opacity: 1;
       }
-
       #creation-date {
         font-size: 0.75rem;
       }
-
       #arrow-right {
         color: #fcfaf9;
         transition: all 0.4s ease;
@@ -214,11 +191,9 @@ export const SidebarCard = styled.div`
         opacity: 0;
         margin-left: auto;
       }
-
       #selected-icon-container {
         margin-left: auto;
       }
-
       #selected-dot {
         height: 8px;
         width: 8px;
@@ -229,34 +204,27 @@ export const SidebarCard = styled.div`
         transition: all 0.2s ease;
       }
     }
-
     li.delete-active {
       background-color: #fcfaf9;
       transition: backround-color 0.2s ease-in-out;
       color: #292929;
-
       p {
         color: #292929;
       }
     }
-
     li.active-note {
       background-color: #48e5c2;
     }
-
     li:first-child {
       border-radius: 15px 15px 0 0;
     }
-
     li:last-child {
       border-radius: 0 0 15px 15px;
     }
-
     li:only-child {
       border-radius: 15px;
     }
   }
-
   .note-text {
     font-size: 0.8rem;
   }
@@ -274,7 +242,6 @@ export const NewBtn = styled.div`
   background-color: ${(props) => (props.deletedActive ? "#df3153" : "none")};
   transition: background-color 0.3s ease;
   cursor: pointer;
-
   .add-item {
     display: inline-block;
     line-height: 30px;
@@ -284,7 +251,6 @@ export const NewBtn = styled.div`
     display: flex;
     align-items: center;
   }
-
   .delete-item {
     display: inline-block;
     line-height: 30px;
@@ -294,12 +260,10 @@ export const NewBtn = styled.div`
     display: flex;
     align-items: center;
   }
-
   .trash-icon-btn {
     color: #fcfaf9;
     background-color: #df3153;
   }
-
   &:hover {
     background-color: ${(props) => (props.deletedActive ? "none" : "#292929")};
     box-shadow: 0 10px 6px -6px #333;
@@ -320,15 +284,12 @@ export const LogoutBtn = styled.button`
   justify-content: center;
   transition: background-color 0.2s ease-in-out;
   box-shadow: 0 10px 6px -6px #0a0a0a;
-
   &:focus {
     outline: none;
   }
-
   &:hover {
     background-color: #82edd6;
   }
-
   #logout-icon {
     margin: 0 5px;
   }
@@ -343,7 +304,6 @@ export const NewItemInput = styled.input`
   height: 30px;
   width: 70%;
   color: #fcfaf9;
-
   &:focus {
     outline: none;
     background-color: #292929;

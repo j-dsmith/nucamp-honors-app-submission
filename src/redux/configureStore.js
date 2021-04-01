@@ -13,6 +13,7 @@ const appReducer = combineReducers({
   user: UserReducer,
 });
 
+//Per Dan Abramov - This is a way to reset state to initial on logging out that simplifies the process when multiple reducers are being utilized
 const rootReducer = (state, action) => {
   if (action.type === ActionTypes.LOGOUT) {
     state = undefined;

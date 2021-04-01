@@ -54,13 +54,13 @@ const NotesTray = ({
 
   return (
     <>
-      {deleted.deleteActive ? (
+      {deleted.deleteActive && (
         <InfoToast
           heading="Delete Items"
           content="Click the delete icon to remove projects or notes. Removed content can be viewed by selecting TRASH from the sidebar."
           positionX={515}
         />
-      ) : null}
+      )}
       <StyledTray className={trayActive && "tray-active"} projectsTray>
         <Scrollbars>
           <h2 style={{ textShadow: "1px 1px 4px #292929" }}>

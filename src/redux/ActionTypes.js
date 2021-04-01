@@ -1,8 +1,10 @@
+//Notes
 export const ADD_NOTE = "ADD_NOTE";
 export const DELETE_NOTE = "DELETE_NOTE";
 export const CONTENT_SELECTED = "NOTE_SELECTED";
 export const UPDATE_NOTE = "UPDATE_NOTE";
 
+//Projects
 export const ADD_PROJECT = "ADD_PROJECT";
 export const TOGGLE_DELETE = "TOGGLE_DELETE";
 export const DELETE_PROJECT = "DELETE_PROJECT";
