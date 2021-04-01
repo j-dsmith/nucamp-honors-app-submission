@@ -22,7 +22,7 @@ const CornerWidget = ({ dailyGoal }) => {
     <InfoWidget>
       <div className="info-widget-goal">
         <h4>Daily Goal</h4>
-        <p className={`${dailyGoal.goalComplete ? "checked" : null}`}>
+        <p className={`${dailyGoal.goalComplete && "checked"}`}>
           {dailyGoal.dailyGoal}
         </p>
       </div>

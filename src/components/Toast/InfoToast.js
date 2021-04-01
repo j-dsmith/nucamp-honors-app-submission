@@ -27,7 +27,6 @@ const InfoToast = ({ heading, content, tipsOn, positionX, positionY }) => {
         <h4>{heading}</h4>
         <div
           className="icon-container"
-          //!fix hover effects with hover zone
           onMouseEnter={() => setCloseToastVisible(true)}
           onMouseLeave={() => setCloseToastVisible(false)}
         >

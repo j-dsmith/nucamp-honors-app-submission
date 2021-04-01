@@ -39,7 +39,7 @@ const Trash = ({ deleted }) => {
                     <p>{removeHtmlTags(note.text)}</p>
                   </DeletedNote>
                   <div className="note-info-col">
-                    <DeletedTitle className={note.title ? null : "untitled"}>
+                    <DeletedTitle className={!note.title && "untitled"}>
                       {note.title ? note.title : "Untitled"}
                     </DeletedTitle>
                     <h4 className="note-id">ID: {note.noteId}</h4>

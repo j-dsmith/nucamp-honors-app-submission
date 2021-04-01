@@ -22,7 +22,7 @@ const Main = ({ isAuthUser }) => {
     <div className={"grid-container"}>
       {/* create routes here, home - projects, notes (note id for custom param routes), trash */}
       {isAuthUser ? <Sidebar /> : null}
-      {location.pathname !== "/home" ? <CornerWidget /> : null}
+      {location.pathname !== "/home" && <CornerWidget />}
       <Switch>
         <AuthRoute path="/home" render={() => <HomeInfo />} type="private" />
         <AuthRoute

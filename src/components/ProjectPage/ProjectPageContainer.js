@@ -5,10 +5,9 @@ import InfoToast from "../Toast/InfoToast";
 
 const mapStateToProps = (state) => ({
   deleted: state.projects.deleted,
-  projectSelectedId: state.contentSelected.projectSelectedId,
 });
 
-const ProjectPageContainer = ({ deleted, projectSelectedId }) => {
+const ProjectPageContainer = ({ deleted }) => {
   return (
     <PageContainer>
       {!deleted.deleteActive ? (

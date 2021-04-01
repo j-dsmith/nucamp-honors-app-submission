@@ -25,12 +25,12 @@ const EditorContainer = ({ projects, contentSelected, deleted }) => {
           content="The editor is your space to create your next masterpiece, or just organize your thoughts. The save button will ensure your content is stored safely."
           positionX={515}
         />
-        {isNoteSelected && !deleted.deleteActive ? (
+        {isNoteSelected && !deleted.deleteActive && (
           <Editor
-            selectedNote={!deleted.deleteActive ? selectedNote : null}
+            selectedNote={!deleted.deleteActive && selectedNote}
             projectId={projectSelectedId}
           />
-        ) : null}
+        )}
       </GridContainer>
     </FadeInEditor>
   );

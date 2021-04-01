@@ -180,7 +180,7 @@ class Sidebar extends Component {
           setNotesActive={this.setNotesActive}
         />
 
-        {loggedOut ? <Redirect to="/" /> : null}
+        {loggedOut && <Redirect to="/" />}
       </SidebarContainer>
     );
   }

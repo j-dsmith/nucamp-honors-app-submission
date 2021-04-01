@@ -35,7 +35,7 @@ const ProjectsTray = ({
   const [newProjectTitle, setNewProjectTitle] = useState("");
 
   return (
-    <StyledTray className={trayActive ? "tray-active" : null} projectsTray>
+    <StyledTray className={trayActive && "tray-active"} projectsTray>
       <Scrollbars>
         <h2>Projects</h2>
         <TrayHeading>
@@ -57,7 +57,7 @@ const ProjectsTray = ({
               return (
                 <li
                   key={project.projectId}
-                  className={deleted.deleteActive ? "delete-active" : null}
+                  className={deleted.deleteActive && "delete-active"}
                 >
                   {deleted.deleteActive ? (
                     <div className="project-list-item">

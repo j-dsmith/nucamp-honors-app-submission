@@ -164,7 +164,7 @@ let SignUpForm = ({ setCurrentUser }) => {
           </StyledForm>
         )}
       </Formik>
-      {toHome ? <Redirect to="/home" /> : null}
+      {toHome && <Redirect to="/home" />}
     </FormContainer>
   );
 };

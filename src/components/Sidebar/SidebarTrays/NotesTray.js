@@ -61,7 +61,7 @@ const NotesTray = ({
           positionX={515}
         />
       ) : null}
-      <StyledTray className={trayActive ? "tray-active" : null} projectsTray>
+      <StyledTray className={trayActive && "tray-active"} projectsTray>
         <Scrollbars>
           <h2 style={{ textShadow: "1px 1px 4px #292929" }}>
             {currentProject.title ? currentProject.title : "Untitled Project"}
@@ -86,7 +86,7 @@ const NotesTray = ({
                 return (
                   <li
                     key={note.noteId}
-                    className={deleted.deleteActive ? "delete-active" : null}
+                    className={deleted.deleteActive && "delete-active"}
                   >
                     {deleted.deleteActive ? (
                       <div className="notes-list-item">
@@ -130,14 +130,14 @@ const NotesTray = ({
                                 "..."}
                             </p>
                           </div>
-                          {contentSelected.noteSelectedId === note.noteId ? (
+                          {contentSelected.noteSelectedId === note.noteId && (
                             <div
                               className="list-icon"
                               id="selected-icon-container"
                             >
                               <BsIcons.BsDot id="selected-dot" />
                             </div>
-                          ) : null}
+                          )}
                         </div>
                       </Link>
                     )}
